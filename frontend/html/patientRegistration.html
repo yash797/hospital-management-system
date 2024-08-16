@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Registration Form</title>
+    <link rel="stylesheet" href="../css/patientRegistration.css">
+    <style>
+      .form-group-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Adjusts space between elements */
+      }
+      .form-group {
+        flex: 1 1 calc(50% - 20px); /* Makes fields take up 50% of the container */
+      }
+      .form-group.full-width {
+        flex: 1 1 100%; /* Makes the Address field full width */
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      .form-group-container .form-group:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="header">Patient Registration</h2>
+      <form action="#" method="post">
+        <div class="form-group-container">
+          <div class="form-group">
+            <input type="text" id="Name" name="fullName" placeholder="Ajay"   required />
+          </div>
+
+          <div class="form-group">
+            <select id="role" name="role">
+              <option value="">Select Role</option>
+              <option value="patient">Patient</option>
+              <option value="outpatient">Outpatient</option>
+              <option value="inpatient">Inpatient</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            
+            <select id="gender" name="gender" required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="ajaypaidi872@gmail.com"    required />
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="phone" name="phone"  placeholder="6377543811" required />
+          </div>
+
+          <div class="form-group full-width">
+            <input type="text" id="address" name="address" placeholder="144/3 tarala street bhagpath nagar Hyderabad pin:531102" required />
+          </div>
+
+          <div class="form-group">
+            
+            <input type="date" id="dob" name="dob" placeholder="12-09-1990"  required />
+          </div>
+
+          <div class="form-group">
+            <input type="password" id="password" name="password"  placeholder="Test@123" required />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Test@123"
+              required
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <input type="submit" value="Register" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
