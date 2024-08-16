@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Doctor Appointments</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="sideNav.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <!-- <nav class="bg-blue-600 p-4 text-white">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-lg font-bold mb-4 md:mb-0">Hospital Management System</div>
+            <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+                <a href="#" class="hover:text-blue-200">Home</a>
+                <a href="#" class="hover:text-blue-200">Logout</a>
+            </div>
+        </div>
+    </nav> -->
+
+    <!-- Include side navigation -->
+    <!-- <div class="fixed top-0 left-0 w-full md:w-64 bg-blue-700 h-screen p-6 text-white side-nav">
+        <h2 class="text-xl font-bold mb-4">Admin Dashboard</h2>
+        <ul>
+            <li><a href="manage-appointments.html" class="hover:bg-blue-800 block p-2 rounded-md">Manage Doctor Appointments</a></li>
+            <li><a href="manage-users.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Manage Users</a></li>
+            <li><a href="show-patients.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Show All Patients</a></li>
+            <li><a href="reports.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Reports</a></li>
+        </ul>
+    </div> -->
+
+    <!-- Main Content -->
+    <div class="content p-6 md:mx-28 mx-auto">
+        <h1 class="text-2xl font-bold mb-6">Manage Doctor Appointments</h1>
+
+        <!-- Show All Doctors Section -->
+        <section class="bg-white p-6 border border-gray-300 rounded-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Show All Doctors</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">Doctor ID</th>
+                            <th class="py-2 px-4 border-b">Name</th>
+                            <th class="py-2 px-4 border-b">Specialization</th>
+                            <th class="py-2 px-4 border-b">Schedule</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctorTableBody" class="text-center">
+                        <tr>
+                            <td class="py-2 px-4 border-b">D001</td>
+                            <td class="py-2 px-4 border-b">Dr. Smith</td>
+                            <td class="py-2 px-4 border-b">Cardiology</td>
+                            <td class="py-2 px-4 border-b">9:00 AM - 5:00 PM</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Cancel Appointments Section -->
+        <section class="bg-white p-6 border border-gray-300 rounded-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Cancel Appointments</h2>
+            <div class="mb-4">
+                <label class="block mb-2">
+                    <span class="text-gray-700">Select Date</span>
+                    <input type="date" id="appointmentDate" class="form-input mt-1 block w-full md:w-48">
+                </label>
+                <button type="button" onclick="viewAppointments()" class="bg-blue-600 text-white px-4 py-2 rounded-md">View Appointments</button>
+            </div>
+            <div id="appointmentResults" class="bg-white p-4 border border-gray-300 rounded-md">
+                <h3 class="text-lg font-semibold mb-2">Appointments</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 border-b">Appointment ID</th>
+                                <th class="py-2 px-4 border-b">Patient Name</th>
+                                <th class="py-2 px-4 border-b">Doctor Name</th>
+                                <th class="py-2 px-4 border-b">Time</th>
+                                <th class="py-2 px-4 border-b">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td class="py-2 px-4 border-b">A001</td>
+                                <td class="py-2 px-4 border-b">Jane Doe</td>
+                                <td class="py-2 px-4 border-b">Dr. Smith</td>
+                                <td class="py-2 px-4 border-b">10:00 AM</td>
+                                <td class="py-2 px-4 border-b">
+                                    <button class="bg-red-600 text-white px-3 py-1 rounded-md">Cancel</button>
+                                </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="admin-functions.js" type="text/javascript"></script>
+</body>
+</html>

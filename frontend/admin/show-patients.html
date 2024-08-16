@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show All Patients</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="sideNav.js" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Include side navigation -->
+    <!-- <div class="fixed top-0 left-0 w-64 bg-blue-700 h-screen p-6 text-white side-nav">
+        <h2 class="text-xl font-bold mb-4">Admin Dashboard</h2>
+        <ul>
+            <li><a href="manage-appointments.html" class="hover:bg-blue-800 block p-2 rounded-md">Manage Doctor Appointments</a></li>
+            <li><a href="manage-users.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Manage Users</a></li>
+            <li><a href="show-patients.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Show All Patients</a></li>
+            <li><a href="reports.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Reports</a></li>
+        </ul>
+    </div> -->
+
+    <!-- Main Content -->
+    <div class="content p-6 md:mx-28 mx-auto">
+        <h1 class="text-2xl font-bold mb-6">Show All Patients</h1>
+
+        <!-- Patient Table -->
+        <div class="bg-white p-6 border border-gray-300 rounded-md">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">Patient ID</th>
+                        <th class="py-2 px-4 border-b">Name</th>
+                        <th class="py-2 px-4 border-b">Age</th>
+                        <th class="py-2 px-4 border-b">Gender</th>
+                        <th class="py-2 px-4 border-b">Contact</th>
+                        <th class="py-2 px-4 border-b">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <td class="py-2 px-4 border-b">P001</td>
+                        <td class="py-2 px-4 border-b">John Doe</td>
+                        <td class="py-2 px-4 border-b">30</td>
+                        <td class="py-2 px-4 border-b">Male</td>
+                        <td class="py-2 px-4 border-b">555-1234</td>
+                        <td class="py-2 px-4 border-b">
+                            <button class="bg-blue-600 text-white px-3 py-1 rounded-md">View Details</button>
+                        </td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="sideNav.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    <!-- <nav class="bg-blue-600 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-lg font-bold">Hospital Management System</div>
+            <div>
+                <a href="#" class="hover:text-blue-200">Home</a>
+                <a href="#" class="ml-4 hover:text-blue-200">Logout</a>
+            </div>
+        </div>
+    </nav> -->
+
+    <!-- Include side navigation -->
+    <!-- <div class="fixed top-0 left-0 w-64 bg-blue-700 h-screen p-6 text-white side-nav">
+        <h2 class="text-xl font-bold mb-4">Admin Dashboard</h2>
+        <ul>
+            <li><a href="manage-appointments.html" class="hover:bg-blue-800 block p-2 rounded-md">Manage Doctor Appointments</a></li>
+            <li><a href="manage-users.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Manage Users</a></li>
+            <li><a href="show-patients.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Show All Patients</a></li>
+            <li><a href="reports.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Reports</a></li>
+        </ul>
+    </div> -->
+
+    <!-- Main Content -->
+    <div class="content p-6 mx-28">
+        <h1 class="text-2xl font-bold mb-6">Manage Users</h1>
+        <!-- Import Users Section -->
+        <section class="bg-white p-6 border border-gray-300 rounded-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Import Users</h2>
+            <form id="importForm">
+                <label class="block mb-4">
+                    <span class="text-gray-700">Upload File</span>
+                    <input type="file" id="fileInput" class="form-input mt-1 block w-full" accept=".json, .xml">
+                </label>
+                <button type="button" onclick="importUsers()" class="bg-blue-600 text-white px-4 py-2 rounded-md">Upload</button>
+            </form>
+        </section>
+
+        <!-- Add User Form -->
+        <form class="bg-white p-6 border border-gray-300 rounded-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Add New User</h2>
+            <label class="block mb-4">
+                <span class="text-gray-700">Username</span>
+                <input type="text" class="form-input mt-1 block w-full md:w-48 py-1" placeholder="Enter username">
+            </label>
+            <label class="block mb-4">
+                <span class="text-gray-700">Email</span>
+                <input type="email" class="form-input mt-1 block w-full md:w-48 py-1 " placeholder="Enter email">
+            </label>
+            <label class="block mb-4">
+                <span class="text-gray-700">Role</span>
+                <select class="form-select mt-1 -ml-1 block md:w-48 w-full py-1">
+                    <option>Admin</option>
+                    <option>Doctor</option>
+                    <option>User</option>
+                </select>
+            </label>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md">Add User</button>
+        </form>
+
+        <!-- User Management Table -->
+        <div class="bg-white p-6 border border-gray-300 rounded-md">
+            <h2 class="text-xl font-semibold mb-4">Existing Users</h2>
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">Username</th>
+                        <th class="py-2 px-4 border-b">Email</th>
+                        <th class="py-2 px-4 border-b">Role</th>
+                        <th class="py-2 px-4 border-b">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <td class="py-2 px-4 border-b">jdoe</td>
+                        <td class="py-2 px-4 border-b">jdoe@example.com</td>
+                        <td class="py-2 px-4 border-b">Doctor</td>
+                        <td class="py-2 px-4 border-b">
+                            <button class="bg-yellow-500 text-white px-3 py-1 rounded-md">Edit</button>
+                            <button class="bg-red-600 text-white px-3 py-1 rounded-md ml-2">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
