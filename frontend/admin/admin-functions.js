@@ -95,3 +95,8 @@ function filterPatients() {
         row.style.display = name.includes(filter) ? '' : 'none';
     });
 }
+
+function generateReport() {
+    // Implement report generation functionality here
+    document.getElementById('reportResults').innerHTML = '<p>Report generation functionality not yet implemented.</p>';
+}
