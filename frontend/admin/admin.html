@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System - Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="sideNav.js" defer></script>
+    <script src="admin-functions.js" defer></script>
+
+    <style>
+        .content {
+            margin-left: 16rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <!-- <nav class="bg-blue-600 p-4 text-white">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-lg font-bold">Hospital Management System</div>
+            <div>
+                <a href="#" class="hover:text-blue-200">Home</a>
+                <a href="#" class="ml-4 hover:text-blue-200">Logout</a>
+            </div>
+        </div>
+    </nav> -->
+
+    <!-- Side Navigation -->
+    <div class="fixed top-0 left-0 w-64 bg-blue-700 h-screen p-6 text-white side-nav">
+        <h2 class="text-xl font-bold mb-4">Admin Dashboard</h2>
+        <ul>
+            <li><a href="manage-appointments.html" class="hover:bg-blue-800 block p-2 rounded-md">Manage Doctor Appointments</a></li>
+            <li><a href="manage-users.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Manage Users</a></li>
+            <li><a href="show-patients.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Show All Patients</a></li>
+            <li><a href="reports.html" class="hover:bg-blue-800 block p-2 rounded-md mt-2">Reports</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content p-6">
+        <h1 class="text-2xl font-bold mb-6">Welcome to Admin Dashboard</h1>
+        <p>Select an option from the side menu.</p>
+    </div>
+
+</body>
+</html>
