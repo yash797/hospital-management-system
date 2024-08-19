@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Schedule</title>
+    <link rel="stylesheet" href="../css/doctorSchedule.css">
+    <script src="../scripts/doctorSchedule.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Doctor Schedule</h2>
+        
+        <label for="doctorDropdown">Select Doctor:</label>
+        <select id="doctorDropdown">
+            <option value="">Select Doctor</option>
+            <!-- Doctor options will be added dynamically -->
+        </select>
+
+        <label for="scheduleDate">Select Date:</label>
+        <input type="date" id="scheduleDate">
+
+        <button id="checkSchedule">Check Schedule</button>
+
+        <div id="doctorDetails"></div>
+        <div id="doctorSchedule"></div>
+
+        <button id="addAppointmentBtn" style="display:none;">Add Appointment</button>
+    </div>
+    
+</body>
+</html>
