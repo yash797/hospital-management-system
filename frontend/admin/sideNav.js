@@ -21,3 +21,4 @@ function fetchPageContent(url) {
         .catch(error => console.error('Error fetching page content:', error));
 }
 
+
