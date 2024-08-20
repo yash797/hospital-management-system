@@ -4,6 +4,272 @@
 <head>
     <meta charset="UTF-8">
     <title>Suggest Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="sideNav.js" defer></script>
+</head>
+
+<body class="bg-gray-200 h-full w-full flex">
+<!-- Sidebar -->
+<div class="md:visible invisible side-nav">
+    <input type="checkbox" id="navcheck" class="hidden" />
+
+    <!-- Hamburger Menu -->
+    <label for="navcheck" aria-hidden="true" class="fixed top-4 left-4 z-30 cursor-pointer">
+        <div id="hamburger"
+            class="relative w-8 h-6 flex flex-col items-center justify-between transition-transform duration-300 ease-in-out">
+            <div class="w-8 h-0.5 bg-gray-800"></div>
+            <div class="w-8 h-0.5 bg-gray-800"></div>
+            <div class="w-8 h-0.5 bg-gray-800"></div>
+        </div>
+    </label>
+
+    <!-- Sidebar -->
+    <nav id="sidebar"
+        class="fixed bg-black bg-opacity-20 shadow-2xl z-10 absolute left-0 w-80 h-full transform -translate-x-full transition-transform duration-500 ease-in-out z-20 py-4 flex flex-col">
+        <div class="text-center mb-24">
+            <img src="../admin/admin.svg" alt="Doctor's Image" class="w-24 h-24 mx-auto rounded-full" />
+            <h2 class="mt-4 text-xl font-semibold text-gray-200">Yash Pande</h2>
+            <p class="text-sm text-gray-200">yashpande2002@gmail.com</p>
+            <ul class="space-y-4 mt-6 text-left w-72">
+                <li class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2">
+                    <a href="ViewAppointment.html" class="block px-2 rounded-md"><i
+                            class="fa-solid fa-hospital-user -ml-4 mr-2"></i>View Appointments</a>
+                </li>
+                <li class="nav-item bg-white text-[#006B82] shadow-xl shadow-gray-900/50 rounded-r-3xl pl-3 py-2">
+                    <a href="SuggestTest.html" class="block px-2 rounded-md"><i
+                            class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Suggest Medical Test</a>
+                </li>
+                <li class="nav-item bg-white text-[#006B82] rounded-r-3xl shadow-xl shadow-gray-900/50 pl-3 py-2">
+                    <a href="SuggestMeds.html" class="block px-2 rounded-md"><i
+                            class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Suggest Medicine</a>
+                </li>
+            </ul>
+        </div>
+        <footer>
+            <button id="sign-out-btn"
+                class="rounded-r-3xl w-72 shadow-xl shadow-gray-900/50 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none">
+                Sign Out
+            </button>
+        </footer>
+    </nav>
+</div>
+<div class="flex flex-row w-full h-full">
+    <section class="w-1/5 bg-gradient-to-r from-purple-500 to-gray-600 h-full">
+        <header class="text-white text-center py-4">Menu</header>
+    </section>
+
+    <section class="w-4/5 h-full flex flex-col p-4">
+        <header class="bg-white p-4 rounded-xl shadow-md text-lg font-semibold mb-4">Suggest Test</header>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+
+            <!-- Patient Information Section -->
+            <div class="mb-4">
+                <h2 class="font-semibold text-xl mb-2">Patient Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="patientName" class="block mb-1">Patient Name</label>
+                            <input type="text" id="patientName" class="border border-gray-400 p-2 rounded-lg w-full"
+                                   placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="patientAge" class="block mb-1">Age</label>
+                            <input type="number" id="patientAge" class="border border-gray-400 p-2 rounded-lg w-full"
+                                   placeholder="35">
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="patientGender" class="block mb-1">Gender</label>
+                            <select id="patientGender" class="border border-gray-400 p-2 rounded-lg w-full">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="patientId" class="block mb-1">Patient ID</label>
+                            <input type="text" id="patientId" class="border border-gray-400 p-2 rounded-lg w-full"
+                                   placeholder="12345">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Test Selection Section -->
+            <div class="mb-4">
+                <h2 class="font-semibold text-xl mb-2">Select Medical Tests</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="selectTest" class="block mb-1">Select Test</label>
+                            <select id="selectTest" class="border border-gray-400 p-2 rounded-lg w-full">
+                                <option disabled selected>Select a Test</option>
+                                <option value="bloodTest">Blood Test</option>
+                                <option value="xray">X-ray</option>
+                                <option value="mri">MRI</option>
+                                <option value="ctScan">CT Scan</option>
+                                <option value="urineTest">Urine Test</option>
+                                <option value="otherTest">Other</option>
+                            </select>
+                        </div>
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded-lg" onclick="addTest()">Add Test</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Tests Section -->
+            <div class="mb-4">
+                <h2 class="font-semibold text-xl mb-2">Recommended Tests</h2>
+                <div id="testList" class="space-y-2">
+                    <!-- Dynamic list of selected tests will appear here -->
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="mb-4">
+                <h2 class="font-semibold text-xl mb-2">Additional Notes</h2>
+                <textarea id="doctorNotes" class="border border-gray-400 p-2 rounded-lg w-full h-32"
+                          placeholder="Add any additional instructions or notes..."></textarea>
+            </div>
+
+            <!-- Appointment Scheduling Section -->
+            <div class="mb-4">
+                <h2 class="font-semibold text-xl mb-2">Schedule Test Appointments</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="testDate" class="block mb-1">Preferred Date</label>
+                        <input type="date" id="testDate" class="border border-gray-400 p-2 rounded-lg w-full">
+                    </div>
+                    <div>
+                        <label for="testTime" class="block mb-1">Preferred Time</label>
+                        <input type="time" id="testTime" class="border border-gray-400 p-2 rounded-lg w-full">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary and Submit Section -->
+            <div class="mb-4">
+                <h2 class="font-semibold text-xl mb-2">Review and Submit</h2>
+                <button class="bg-green-500 text-white py-2 px-4 rounded-lg">Submit Recommendations</button>
+            </div>
+
+        </div>
+    </section>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const navCheck = document.getElementById('navcheck');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const hamburger = document.getElementById('hamburger');
+
+        navCheck.addEventListener('change', function () {
+            if (this.checked) {
+                sidebar.style.transform = 'translateX(0)';
+                mainContent.style.transform = 'translateX(5rem)'; // Sidebar width
+                mainContent.style.filter = 'blur(4.75px)';
+
+                // Transform hamburger to cross
+                hamburger.children[0].style.transform = 'rotate(45deg) translateY(7px)';
+                hamburger.children[1].style.opacity = '0';
+                hamburger.children[2].style.transform = 'rotate(-45deg) translateY(-7px)';
+            } else {
+                sidebar.style.transform = 'translateX(-100%)';
+                mainContent.style.transform = 'translateX(0)';
+                mainContent.style.filter = 'none';
+
+                // Transform cross back to hamburger
+                hamburger.children[0].style.transform = 'rotate(0) translateY(0)';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = 'rotate(0) translateY(0)';
+            }
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function (event) {
+            if (
+                sidebar.style.transform === 'translateX(0px)' &&
+                !sidebar.contains(event.target) &&
+                !hamburger.contains(event.target) &&
+                !navCheck.contains(event.target)
+            ) {
+                navCheck.checked = false;
+                sidebar.style.transform = 'translateX(-100%)';
+                mainContent.style.transform = 'translateX(0)';
+                mainContent.style.filter = 'none';
+
+                // Transform cross back to hamburger
+                hamburger.children[0].style.transform = 'rotate(0) translateY(0)';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = 'rotate(0) translateY(0)';
+            }
+        });
+
+        // Add event listener to navigation items
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach((item) => {
+            item.addEventListener('click', function () {
+                // Remove active class from all items
+                navItems.forEach((nav) => nav.classList.remove('nav-item-active'));
+                // Add active class to the clicked item
+                this.classList.add('nav-item-active');
+            });
+        });
+    });
+</script>
+<script>
+    function addTest() {
+        const selectTest = document.getElementById("selectTest");
+        const testList = document.getElementById("testList");
+
+        if (selectTest.value !== "Select a Test" && selectTest.value !== "") {
+            const testItem = document.createElement("div");
+            testItem.className = "p-2 bg-gray-100 rounded-lg shadow-md flex justify-between items-center";
+
+            testItem.innerHTML = `
+<img src="../../assets/cancel-svgrepo-com.svg" onclick="removeTest(this)" class="w-6 h-6 cursor-pointer">
+                    <span>${selectTest.options[selectTest.selectedIndex].text}</span>
+                `;
+
+            testList.appendChild(testItem);
+            selectTest.selectedIndex = 0;
+        }
+    }
+
+    function removeTest(element) {
+        element.parentElement.remove();
+    }
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Suggest Test</title>
     <link rel="stylesheet" href="../DoctorSectionStyling/AddPatientStyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +291,7 @@
         <header class="FormHeader bg-white p-4 rounded-xl shadow-md text-lg font-semibold mb-4">Suggest Test</header>
         <div class="FormPage bg-white p-6 rounded-xl shadow-md">
 
-            <!-- Patient Information Section -->
+            
             <div class="PatientInfo mb-4">
                 <h2 class="FormSubHeader font-semibold text-xl mb-2">Patient Information</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -59,7 +325,7 @@
                 </div>
             </div>
 
-            <!-- Medical Test Selection Section -->
+            
             <div class="MedicalTest mb-4">
                 <h2 class="FormSubHeader font-semibold text-xl mb-2">Select Medical Tests</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -85,22 +351,22 @@
                 </div>
             </div>
 
-            <!-- Recommended Tests Section -->
+            
             <div class="RecommendedTests mb-4">
                 <h2 class="FormSubHeader font-semibold text-xl mb-2">Recommended Tests</h2>
                 <div id="testList" class="space-y-2">
-                    <!-- Dynamic list of selected tests will appear here -->
+                    
                 </div>
             </div>
 
-            <!-- Notes Section -->
+           
             <div class="NotesSection mb-4">
                 <h2 class="FormSubHeader font-semibold text-xl mb-2">Additional Notes</h2>
                 <textarea id="doctorNotes" class="border border-gray-400 p-2 rounded-lg w-full h-32"
                           placeholder="Add any additional instructions or notes..." style="width: 100%;"></textarea>
             </div>
 
-            <!-- Appointment Scheduling Section -->
+           
             <div class="AppointmentScheduling mb-4">
                 <h2 class="FormSubHeader font-semibold text-xl mb-2">Schedule Test Appointments</h2>
                 <div class="FormRow grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -116,7 +382,7 @@
                 </div>
             </div>
 
-            <!-- Summary and Submit Section -->
+            
             <div class="SummaryAndSubmit mb-4">
                 <h2 class="font-semibold text-xl mb-2">Review and Submit</h2>
                 <button class="FormButton bg-green-500 text-white py-2 px-4 rounded-lg" style="width: max-content">
@@ -140,7 +406,7 @@
             testItem.innerHTML = `
 <img src="../../assets/cancel-svgrepo-com.svg" onclick="removeTest(this)" style="width: 1vw">
                     <span>${selectTest.options[selectTest.selectedIndex].text}</span>
-<!--                    <button class="text-red-500" onclick="removeTest(this)">Remove</button>-->
+
 
                 `;
 
@@ -156,4 +422,4 @@
 
 </body>
 
-</html>
+</html> -->
