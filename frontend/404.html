@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Not Found</title>
+  <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+
+      // Function to update the link based on local storage
+      function updateBackLink() {
+        const userRole = localStorage.getItem('userRole'); // Get userRole from local storage
+        const backLink = document.getElementById('back-link');
+
+        if (userRole) {
+          const roleLowerCase = userRole.toLowerCase(); // Convert role to lowercase
+          backLink.textContent = `Back to ${userRole} page`;
+          backLink.href = `/frontend/${roleLowerCase}/${roleLowerCase}.html`; // Format URL based on role
+        } else {
+          backLink.textContent = 'Back to homepage'; // Fallback text
+          backLink.href = '/'; // Fallback URL
+        }
+      }
+
+      // Function to handle sign out
+      function handleSignOut() {
+        //Only remove the role
+        // localStorage.removeItem("userRole")
+
+        localStorage.clear(); // Clear all local storage
+        window.location.href = '/frontend/login.html'; // Redirect to login page
+      }
+
+      // Call function on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        updateBackLink();
+        document.getElementById('sign-out-btn').addEventListener('click', handleSignOut);
+      });
+    </script>
+</head>
+<body>
+  <section class="flex flex-col items-center h-full sm:p-16 dark:bg-gray-50 dark:text-gray-800">
+    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-40 h-40 dark:text-gray-400">
+        <path fill="currentColor" d="M256,16C123.452,16,16,123.452,16,256S123.452,496,256,496,496,388.548,496,256,388.548,16,256,16ZM403.078,403.078a207.253,207.253,0,1,1,44.589-66.125A207.332,207.332,0,0,1,403.078,403.078Z"></path>
+        <rect width="176" height="32" x="168" y="320" fill="currentColor"></rect>
+        <polygon fill="currentColor" points="210.63 228.042 186.588 206.671 207.958 182.63 184.042 161.37 162.671 185.412 138.63 164.042 117.37 187.958 141.412 209.329 120.042 233.37 143.958 254.63 165.329 230.588 189.37 251.958 210.63 228.042"></polygon>
+        <polygon fill="currentColor" points="383.958 182.63 360.042 161.37 338.671 185.412 314.63 164.042 293.37 187.958 317.412 209.329 296.042 233.37 319.958 254.63 341.329 230.588 365.37 251.958 386.63 228.042 362.588 206.671 383.958 182.63"></polygon>
+      </svg>
+      <p class="text-3xl">Looks like our services are currently offline</p>
+      <a id="back-link" rel="noopener noreferrer" href="#" class="w-56 px-8 py-3 font-semibold rounded bg-blue-500 hover:bg-blue-600 text-gray-50">Back to page</a>
+      <button
+        id="sign-out-btn"
+        class="px-8 py-3 text-white font-semibold w-56 bg-red-500 rounded hover:bg-red-600 focus:outline-none"
+      >
+        Sign Out
+      </button>
+    </div>
+  </section>
+
+  
+    
+</body>
+</html>

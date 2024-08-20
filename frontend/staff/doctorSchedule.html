@@ -6,6 +6,25 @@
     <title>Doctor Schedule</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <script src="doctorSchedule.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const allowedRoles = {
+            "/frontend/admin/admin.html": "Admin",
+            "/frontend/doctor/doctor.html": "Doctor",
+            "/frontend/staff/staff.html": "Staff",
+          };
+      
+          const currentPage = window.location.pathname;
+          const userRole = localStorage.getItem("userRole");
+      
+          console.log('Current Page:', currentPage);
+          console.log('User Role:', userRole);
+      
+          if (allowedRoles[currentPage] !== userRole) {
+            window.location.href = "/frontend/404.html";
+          }
+        });
+      </script>
 </head>
 <body class="bg-gray-100 p-8">
     <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
