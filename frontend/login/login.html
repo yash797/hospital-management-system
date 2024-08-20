@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    
+    <style>
+        /* styles.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #0098B9, #ffffff);
+    color: white;
+}
+
+header {
+    position: absolute;
+    top: 104px;
+    left: 101px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.image-right {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.image-right img {
+    width: 800px; /* Adjust the width as needed */
+}
+
+/* Positioning for User Name text and line */
+.username-container {
+    position: absolute;
+    top: 465px;
+    left: 900px;
+}
+
+.username-text {
+    width: 80px;
+    height: 19px;
+    color: white;
+    opacity: 1;
+}
+
+.username-line {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-container {
+    position: absolute;
+    top: 250px; 
+    left: 250px;
+    width: 300px;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.form-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: black;
+    padding: 10px 0;
+    font-size: 1.2em;
+    width: 100%;
+    
+}
+
+.form-input:focus {
+    outline: none;
+    border-bottom: 2px solid #007bff;
+}
+
+select.form-input {
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select,
+input {
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button {
+    margin-top: 20px;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.input-container {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #6ed3cf;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.form-input:focus + .input-line {
+    transform: scaleX(1);
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #38b6ff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #6ed3cf;
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Group 3.png" alt="Your Health Care Logo" class="logo">
+    </header>
+
+    <div class="form-container">
+        <form>
+            <!-- User ID Field -->
+            <div class="input-container">
+                <label for="userId" class="form-label">User ID</label>
+                <input type="text" id="userId" name="userId" class="form-input">
+                <div class="input-line"></div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="input-container">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-input">
+                <div class="input-line"></div>
+            </div>
+
+            <!-- Login As Dropdown -->
+            <div class="input-container">
+                <label for="username" class="form-label">Login As</label>
+                <select id="username" name="username" class="form-input">
+                    <option value="admin">Admin</option>
+                    <option value="hospital-staff">Hospital Staff</option>
+                    <option value="doctor">Doctor</option>
+                </select>
+                <div class="input-line"></div>
+            </div>
+
+          
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="image-right">
+        <img src="Group 2.svg" alt="Right Side Image">
+    </div>
+</body>
+</html>
