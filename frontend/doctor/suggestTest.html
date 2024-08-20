@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Suggest Test</title>
+    <link rel="stylesheet" href="../DoctorSectionStyling/AddPatientStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body class="bg-gray-200 h-full w-full flex">
+
+<div class="MainBody flex flex-row w-full h-full">
+    <section class="SideNavBar w-1/5 bg-gradient-to-r from-purple-500 to-gray-600 h-full">
+        <header class="text-white text-center py-4">Menu</header>
+    </section>
+
+    <section class="PageBody w-4/5 h-full flex flex-col p-4">
+        <header class="FormHeader bg-white p-4 rounded-xl shadow-md text-lg font-semibold mb-4">Suggest Test</header>
+        <div class="FormPage bg-white p-6 rounded-xl shadow-md">
+
+            <!-- Patient Information Section -->
+            <div class="PatientInfo mb-4">
+                <h2 class="FormSubHeader font-semibold text-xl mb-2">Patient Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="FormRow">
+                        <div class="FormInputBox">
+                            <label for="patientName" class="block mb-1">Patient Name</label>
+                            <input type="text" id="patientName" class="border border-gray-400 p-2 rounded-lg w-full"
+                                   placeholder="John Doe">
+                        </div>
+                        <div class="FormInputBox">
+                            <label for="patientAge" class="block mb-1">Age</label>
+                            <input type="number" id="patientAge" class="border border-gray-400 p-2 rounded-lg w-full"
+                                   placeholder="35">
+                        </div>
+                    </div>
+                    <div class="FormRow">
+                        <div class="FormInputBox">
+                            <label for="patientGender" class="block mb-1">Gender</label>
+                            <select id="patientGender" class="border border-gray-400 p-2 rounded-lg w-full">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="FormInputBox">
+                            <label for="patientId" class="block mb-1">Patient ID</label>
+                            <input type="text" id="patientId" class="border border-gray-400 p-2 rounded-lg w-full"
+                                   placeholder="12345">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Test Selection Section -->
+            <div class="MedicalTest mb-4">
+                <h2 class="FormSubHeader font-semibold text-xl mb-2">Select Medical Tests</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="FormRow">
+                        <div class="FormInputBox">
+                            <label for="selectTest" class="block mb-1">Select Test</label>
+                            <select id="selectTest" class="border border-gray-400 p-2 rounded-lg w-full">
+                                <option disabled selected>Select a Test</option>
+                                <option value="bloodTest">Blood Test</option>
+                                <option value="xray">X-ray</option>
+                                <option value="mri">MRI</option>
+                                <option value="ctScan">CT Scan</option>
+                                <option value="urineTest">Urine Test</option>
+                                <option value="otherTest">Other</option>
+                            </select>
+                        </div>
+
+                        <button class="FormButton bg-blue-500 text-white py-2 px-4 rounded-lg" onclick="addTest()">
+                            Add Test
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Tests Section -->
+            <div class="RecommendedTests mb-4">
+                <h2 class="FormSubHeader font-semibold text-xl mb-2">Recommended Tests</h2>
+                <div id="testList" class="space-y-2">
+                    <!-- Dynamic list of selected tests will appear here -->
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="NotesSection mb-4">
+                <h2 class="FormSubHeader font-semibold text-xl mb-2">Additional Notes</h2>
+                <textarea id="doctorNotes" class="border border-gray-400 p-2 rounded-lg w-full h-32"
+                          placeholder="Add any additional instructions or notes..." style="width: 100%;"></textarea>
+            </div>
+
+            <!-- Appointment Scheduling Section -->
+            <div class="AppointmentScheduling mb-4">
+                <h2 class="FormSubHeader font-semibold text-xl mb-2">Schedule Test Appointments</h2>
+                <div class="FormRow grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="FormInputBox">
+                        <label for="testDate" class="block mb-1">Preferred Date</label>
+                        <input type="date" id="testDate" class="border border-gray-400 p-2 rounded-lg w-full">
+                    </div>
+                    <div class="FormInputBox">
+                        <label for="testTime" class="block mb-1">Preferred Time</label>
+                        <input type="time" id="testTime" class="border border-gray-400 p-2 rounded-lg w-full">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Summary and Submit Section -->
+            <div class="SummaryAndSubmit mb-4">
+                <h2 class="font-semibold text-xl mb-2">Review and Submit</h2>
+                <button class="FormButton bg-green-500 text-white py-2 px-4 rounded-lg" style="width: max-content">
+                    Submit Recommendations
+                </button>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<script>
+    function addTest() {
+        const selectTest = document.getElementById("selectTest");
+        const testList = document.getElementById("testList");
+
+        if (selectTest.value !== "Select a Test" && selectTest.value !== "") {
+            const testItem = document.createElement("div");
+            testItem.className = "p-2 bg-gray-100 rounded-lg shadow-md flex justify-between items-center";
+
+            testItem.innerHTML = `
+<img src="../../assets/cancel-svgrepo-com.svg" onclick="removeTest(this)" style="width: 1vw">
+                    <span>${selectTest.options[selectTest.selectedIndex].text}</span>
+<!--                    <button class="text-red-500" onclick="removeTest(this)">Remove</button>-->
+
+                `;
+
+            testList.appendChild(testItem);
+            selectTest.selectedIndex = 0;
+        }
+    }
+
+    function removeTest(element) {
+        element.parentElement.remove();
+    }
+</script>
+
+</body>
+
+</html>

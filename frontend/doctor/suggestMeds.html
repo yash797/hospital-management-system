@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suggest Medication</title>
+    <link rel="stylesheet" href="../DoctorSectionStyling/MedicationStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="MainBody">
+    <section class="SideNavBar">
+        <header>Menu</header>
+    </section>
+    <section class="PageBody">
+        <header class="FormHeader">Suggest Medication</header>
+        <div class="FormPage">
+            <!-- Patient Information Section -->
+            <div class="PatientInfo">
+                <h2>Patient Information</h2>
+                <div class="FormRow">
+                    <div class="FormInputBox">
+                        <label for="patientName">Patient Name</label>
+                        <input type="text" id="patientName" placeholder="Select Patient">
+                    </div>
+                    <div class="FormInputBox">
+                        <label for="patientDetails">Patient Details</label>
+                        <textarea id="patientDetails" placeholder="Patient details will be displayed here..." disabled></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medication Recommendation Section -->
+            <div class="MedicationSection">
+                <h2>Prescription Form</h2>
+                <form id="prescriptionForm">
+                    <fieldset class="FormFieldSet">
+                        <div class="FormRow">
+                            <div class="FormInputBox">
+                                <label for="medicineName">Medicine Name</label>
+                                <input type="text" id="medicineName" placeholder="Enter medicine name">
+                            </div>
+                            <div class="FormInputBox">
+                                <label for="dosage">Dosage</label>
+                                <input type="text" id="dosage" placeholder="Enter dosage (e.g., 500 mg)">
+                            </div>
+                        </div>
+                        <div class="FormRow">
+                            <div class="FormInputBox">
+                                <label for="frequency">Frequency</label>
+                                <select id="frequency">
+                                    <option value="once">Once Daily</option>
+                                    <option value="twice">Twice Daily</option>
+                                    <option value="thrice">Thrice Daily</option>
+                                </select>
+                            </div>
+                            <div class="FormInputBox">
+                                <label for="duration">Duration</label>
+                                <input type="text" id="duration" placeholder="Enter duration (e.g., 7 days)">
+                            </div>
+                        </div>
+                        <div class="FormRow">
+                            <div class="FormInputBox">
+                                <label for="instructions">Additional Instructions</label>
+                                <textarea id="instructions" placeholder="Enter special instructions"></textarea>
+                            </div>
+                        </div>
+                        <div class="FormButtonRow">
+                            <button type="button" class="FormButton" id="addMedicine">Add Medication</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <!-- Medication History and Alerts -->
+            <div class="MedicationHistory">
+                <h2>Medication History</h2>
+                <div id="historyList">
+                    <!-- Medication history will be displayed here -->
+                </div>
+                <div id="warnings" class="Warnings">
+                    <!-- Warnings about interactions or allergies will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Save and Print Prescription -->
+            <div class="FormButtonRow">
+                <button type="button" class="FormButton" id="savePrescription">Save Prescription</button>
+                <button type="button" class="FormButton" id="printPrescription">Print Prescription</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="../../scripts/medication-script.js"></script>
+</body>
+</html>

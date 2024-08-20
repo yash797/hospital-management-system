@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.MainBody {
+    display: flex;
+    height: 100vh;
+}
+
+.SideNavBar {
+    width: 20%;
+    background-color: #807593;
+    padding: 20px;
+    color: white;
+}
+
+.PageBody {
+    width: 80%;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+.FormHeader {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.FormPage {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.FormFieldSet {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.FormRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.FormInputBox {
+    width: 48%;
+}
+
+.FormInputBox label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.FormInputBox input,
+.FormInputBox select,
+.FormInputBox textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.FormButtonRow {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.FormButton {
+    background-color: #807593;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.FormButton:hover {
+    background-color: #9083D5;
+}
+
+.MedicationHistory,
+.Warnings {
+    margin-top: 20px;
+}
+
+#historyList {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    min-height: 50px;
+}
+
+#warnings {
+    background-color: #ffdddd;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ff8888;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .FormRow {
+        flex-direction: column;
+    }
+
+    .FormInputBox {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .SideNavBar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .PageBody {
+        width: 100%;
+    }
+}
