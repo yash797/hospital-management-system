@@ -1,68 +1,125 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const doctors = [
-        { id: 1, name: "Dr. John Doe", specialty: "Cardiology" },
-        { id: 2, name: "Dr. Jane Smith", specialty: "Dermatology" }
-    ];
+        const maxAppointments = 10;
 
-    const doctorDropdown = document.getElementById("doctorDropdown");
-    const scheduleDateInput = document.getElementById("scheduleDate");
-    const checkScheduleBtn = document.getElementById("checkSchedule");
-    const doctorDetailsDiv = document.getElementById("doctorDetails");
-    const doctorScheduleDiv = document.getElementById("doctorSchedule");
-    const addAppointmentBtn = document.getElementById("addAppointmentBtn");
+        function getPatientData() {
+            return JSON.parse(localStorage.getItem('registeredPatient')) || { patientID: 'P000', firstName: 'John', lastName: 'Doe' };
+        }
 
-    // Populate the dropdown with doctor names
-    doctors.forEach(doctor => {
-        const option = document.createElement("option");
-        option.value = doctor.id;
-        option.textContent = doctor.name;
-        doctorDropdown.appendChild(option);
-    });
+        function getAppointmentList() {
+            return JSON.parse(localStorage.getItem('appointmentList')) || [];
+        }
 
-    // Handle check schedule button click
-    checkScheduleBtn.addEventListener("click", () => {
-        const doctorId = doctorDropdown.value;
-        const selectedDate = scheduleDateInput.value;
+        function saveAppointmentList(appointments) {
+            localStorage.setItem('appointmentList', JSON.stringify(appointments));
+        }
 
-        if (doctorId && selectedDate) {
-            const doctor = doctors.find(doc => doc.id == doctorId);
-            const schedule = JSON.parse(localStorage.getItem(`schedule-${doctorId}`)) || {};
-            const appointments = schedule[selectedDate] || [];
+        function checkSchedule() {
+            const doctorName = document.getElementById('doctorName').value;
+            const appointmentDate = document.getElementById('appointmentDate').value;
 
-            doctorDetailsDiv.innerHTML = `
-                <h3>${doctor.name} - ${doctor.specialty}</h3>
-                <p>Date: ${selectedDate}</p>
-                <p>Appointments Scheduled: ${appointments.length}</p>
+            if (!doctorName || !appointmentDate) {
+                alert('Please select doctor and date.');
+                return;
+            }
+
+            const patient = getPatientData();
+            document.getElementById('patientID').value = patient.patientID;
+            document.getElementById('patientName').value = `${patient.firstName} ${patient.lastName}`;
+
+            const appointmentList = getAppointmentList();
+            const doctorAppointments = appointmentList.filter(
+                app => app.doctorName === doctorName && app.date === appointmentDate
+            );
+
+            // Display schedule details
+            document.getElementById('scheduleDetails').innerHTML = `
+                <h3 class="text-xl font-semibold">Doctor: ${doctorName}</h3>
+                <p>Date: ${appointmentDate}</p>
+                <p>Specialization: General</p>
+                <h4 class="text-lg font-semibold mt-4">Appointments:</h4>
+                <ul id="appointmentsList" class="list-disc pl-5">
+                    ${doctorAppointments.length
+                        ? doctorAppointments
+                            .map(
+                                app => `
+                                    <li>Patient ID: ${app.patientId}, Name: ${app.patientName}, Time Slot: ${app.timeSlot}, Reason: ${app.reason}</li>`
+                            )
+                            .join('')
+                        : '<li>No appointments booked.</li>'
+                    }
+                </ul>
             `;
 
-            if (appointments.length > 0) {
-                const list = document.createElement("ul");
-                appointments.forEach(appointment => {
-                    const listItem = document.createElement("li");
-                    listItem.textContent = `Time: ${appointment.time}, Patient ID: ${appointment.patientId}`;
-                    list.appendChild(listItem);
-                });
-                doctorScheduleDiv.innerHTML = "";
-                doctorScheduleDiv.appendChild(list);
-            } else {
-                doctorScheduleDiv.innerHTML = "<p>No appointments for this date.</p>";
-            }
+            updateTimeSlots(doctorAppointments);
 
-            const availableSlots = ["09:00 AM", "10:00 AM", "11:00 AM", "01:00 PM", "03:00 PM"];
-            const bookedSlots = appointments.map(appointment => appointment.time);
-            const freeSlots = availableSlots.filter(slot => !bookedSlots.includes(slot));
-
-            if (freeSlots.length > 0) {
-                addAppointmentBtn.style.display = "block";
-                addAppointmentBtn.onclick = () => {
-                    window.location.href = `appointmentBooking.html?doctorId=${doctorId}&date=${selectedDate}`;
-                };
-            } else {
-                addAppointmentBtn.style.display = "none";
-                alert("No available slots for this date.");
-            }
-        } else {
-            alert("Please select a doctor and date.");
+            document.getElementById('appointmentForm').classList.toggle(
+                'hidden',
+                doctorAppointments.length >= maxAppointments
+            );
+            document.getElementById('selectedDoctorName').value = doctorName;
+            document.getElementById('selectedDate').value = appointmentDate;
         }
-    });
-});
+
+        function updateTimeSlots(bookedAppointments) {
+            const timeSlotSelect = document.getElementById('timeSlot');
+            timeSlotSelect.innerHTML = '';
+            const startTime = 9; // Starting at 9 AM
+            const endTime = 17; // Ending at 5 PM
+            const bookedSlots = bookedAppointments.map(app => app.timeSlot);
+
+            for (let hour = startTime; hour < endTime; hour++) {
+                const start = `${hour}:00`;
+                const end = `${hour}:30`;
+                const timeString = `${start} - ${end}`;
+
+                if (!bookedSlots.includes(timeString)) {
+                    const option = document.createElement('option');
+                    option.value = timeString;
+                    option.text = timeString;
+                    timeSlotSelect.appendChild(option);
+                }
+            }
+            document.getElementById('endTimeDisplay').textContent = '';
+        }
+
+        function bookAppointment() {
+            const patientID = document.getElementById('patientID').value;
+            const doctorName = document.getElementById('selectedDoctorName').value;
+            const appointmentDate = document.getElementById('selectedDate').value;
+            const timeSlot = document.getElementById('timeSlot').value;
+            const reason = document.getElementById('appointmentReason').value;
+
+            if (!patientID || !doctorName || !appointmentDate || !timeSlot || !reason) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const appointmentList = getAppointmentList();
+            if (appointmentList.some(app => app.doctorName === doctorName && app.date === appointmentDate && app.timeSlot === timeSlot)) {
+                alert('This time slot is already booked.');
+                return;
+            }
+
+            appointmentList.push({
+                patientId: patientID,
+                doctorName: doctorName,
+                date: appointmentDate,
+                timeSlot: timeSlot,
+                reason: reason,
+                patientName: document.getElementById('patientName').value
+            });
+
+            saveAppointmentList(appointmentList);
+
+            // Refresh schedule after booking
+            checkSchedule();
+        }
+
+        window.onload = () => {
+            // Fetch and display the schedule if necessary
+            const doctorName = document.getElementById('doctorName').value;
+            const appointmentDate = document.getElementById('appointmentDate').value;
+            if (doctorName && appointmentDate) {
+                checkSchedule();
+            }
+        };
+    
