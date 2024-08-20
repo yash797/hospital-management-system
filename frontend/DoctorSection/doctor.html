@@ -4,15 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hospital Management System - Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css"
-      rel="stylesheet"
-    /> -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css"
       rel="stylesheet"
     />
     <script>
@@ -26,7 +20,15 @@
         },
       };
     </script>
-    <script src="sideNav.js" defer></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../admin/sideNav.js" defer></script>
+    
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    
     <!-- <script src="admin-functions.js" defer></script> -->
 
     <style>
@@ -249,8 +251,8 @@
         </p>
       </div>
     </main>
-
-    <script>
+    <script src="doctor.js" ></script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function() {
           const navCheck = document.getElementById('navcheck');
           const sidebar = document.getElementById('sidebar');
@@ -311,5 +313,63 @@
           });
         });
       </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const appointments = [
+                { time: "10:30", type: "Follow Up", name: "Mansoor", date: "2024-08-16" },
+                { time: "12:30", type: "Consultancy", name: "Virat", date: "2024-08-16" },
+                { time: "14:30", type: "OPD", name: "Surya Kumar", date: "2024-08-17" },
+                { time: "16:30", type: "Treatment", name: "Narendra", date: "2024-08-17" },
+                { time: "09:00", type: "Consultancy", name: "Rohit", date: "2024-08-16" }
+            ];
+
+            const form = document.querySelector("form");
+            const appointmentList = document.querySelector(".AppointmentList");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const appointmentDate = document.getElementById("appointmentDate").value;
+                const appointmentType = document.getElementById("appointmentType").value;
+
+                const filteredAppointments = appointments.filter(appointment => {
+                    return (appointmentType === "All" || appointment.type.toLowerCase() === appointmentType.toLowerCase()) &&
+                        (!appointmentDate || appointment.date === appointmentDate);
+                });
+
+                displayAppointments(filteredAppointments);
+            });
+
+            function displayAppointments(filteredAppointments) {
+                appointmentList.innerHTML = "";
+
+                if (filteredAppointments.length === 0) {
+                    appointmentList.innerHTML = "<p>No appointments found.</p>";
+                    return;
+                }
+
+                let appointmentListRow;
+
+                filteredAppointments.forEach((appointment, index) => {
+                    if (index % 2 === 0) {
+                        appointmentListRow = document.createElement("div");
+                        appointmentListRow.className = "flex w-full mb-4 justify-between";
+                        appointmentList.appendChild(appointmentListRow);
+                    }
+
+                    const appointmentCard = document.createElement("div");
+                    appointmentCard.className = "bg-white border border-black rounded-xl p-4 w-5/12 mb-4 box-border";
+
+                    appointmentCard.innerHTML = `
+                        <div class="font-semibold">${appointment.time} | ${appointment.type}</div>
+                        <div>${appointment.name}</div>
+                        <div class="text-blue-500 cursor-pointer">View</div>
+                    `;
+
+                    appointmentListRow.appendChild(appointmentCard);
+                });
+            }
+        });
+    </script> -->
   </body>
 </html>
