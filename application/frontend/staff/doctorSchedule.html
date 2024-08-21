@@ -9,9 +9,9 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
           const allowedRoles = {
-            "/application/frontend/admin/admin.html": "Admin",
-            "/application/frontend/doctor/doctor.html": "Doctor",
-            "/application/frontend/staff/staff.html": "Staff",
+            "admin/admin.html": "Admin",
+            "doctor/doctor.html": "Doctor",
+            "staff/staff.html": "Staff",
           };
       
           const currentPage = window.location.pathname;
@@ -21,7 +21,7 @@
           console.log('User Role:', userRole);
       
           if (allowedRoles[currentPage] !== userRole) {
-            window.location.href = "/application/frontend/404.html";
+            window.location.href = "404.html";
           }
         });
       </script>
