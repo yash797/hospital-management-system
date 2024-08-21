@@ -24,6 +24,30 @@
         },
       };
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const allowedRoles = {
+          "/application/frontend/admin/admin.html": "Admin",
+          "/application/frontend/doctor/doctor.html": "Doctor",
+          "/application/frontend/staff/staff.html": "Staff",
+        };
+
+        const currentPage = window.location.pathname;
+        const userRole = localStorage.getItem("userRole");
+
+        if (allowedRoles[currentPage] !== userRole) {
+          window.location.href = "/application/frontend/404.html";
+        }
+        const signOutBtn = document.getElementById("sign-out-btn");
+        signOutBtn.addEventListener("click", function () {
+          //Only remove the role
+        // localStorage.removeItem("userRole")
+
+        localStorage.clear(); // Clear all local storage
+        window.location.href = '/application/frontend/login.html'; // Redirect to login page
+        });
+      });
+    </script>
     <script src="sideNav.js" defer></script>
 
     <style>
@@ -87,13 +111,7 @@
                 <li><a href="#" class="flex items-center text-gray-800"><i class="fa-solid fa-calendar-plus mr-2"></i> Book Appointments</a></li>
             </ul> -->
           <ul class="space-y-4 mt-6 text-left w-72">
-            <li
-    class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2"
-  >
-    <a href="doctorSchedule.html" class="block px-2 rounded-md"
-      ><i class="fa-solid fa-calendar-alt -ml-4 mr-2"></i>Doctor Schedule</a
-    >
-  </li>
+           
   <li
     class="nav-item bg-white text-[#006B82] rounded-r-3xl shadow-xl shadow-gray-900/50 pl-3 py-2"
   >
@@ -101,6 +119,13 @@
       ><i class="fa-solid fa-user-plus -ml-4 mr-2"></i>Patient Registration</a
     >
   </li>
+  <li
+  class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2"
+>
+  <a href="doctorSchedule.html" class="block px-2 rounded-md"
+    ><i class="fa-solid fa-calendar-alt -ml-4 mr-2"></i>Doctor Schedule</a
+  >
+</li>
             </li>
           </ul>
         </div>
