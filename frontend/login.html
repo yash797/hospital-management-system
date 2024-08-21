@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script>
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("hidden");
+      }
+
+      function selectItem(value) {
+        const button = document.getElementById("dropdownDefaultButton");
+        button.firstChild.textContent = value; // Update button text
+        toggleDropdown(); // Close the dropdown
+        localStorage.setItem("userRole", value); // Store the selected role in session storage
+      }
+
+      function validateForm() {
+        const userId = document.getElementById("userId").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const role = localStorage.getItem("userRole");
+
+        if (!userId || !password || !role) {
+          alert("Please fill out all fields and select a role.");
+          return false;
+        }
+
+        return true;
+      }
+
+      function handleFormSubmit(event) {
+        event.preventDefault();
+
+        if (validateForm()) {
+          const role = localStorage.getItem("userRole");
+
+          let redirectUrl = "";
+          switch (role) {
+            case "Admin":
+              redirectUrl = "/frontend/admin/admin.html";
+              break;
+            case "Doctor":
+              redirectUrl = "/frontend/doctor/doctor.html";
+              break;
+            case "Staff":
+              redirectUrl = "/frontend/staff/staff.html";
+              break;
+            default:
+              alert("Invalid role selected.");
+              return;
+          }
+
+          window.location.href = redirectUrl;
+        }
+      }
+    </script>
+  </head>
+  <body
+  class="h-screen bg-gradient-to-r from-[#0098B9] to-cyan-200 md:from-[#0098B9] md:to-white text-white overflow-hidden mx-4 md:mx-32"
+>
+
+    <header class="absolute top-24 ">
+      <img src="./assets/logo.png" alt="Your Health Care Logo" class="md:w-[150px] w-24" />
+    </header>
+
+    <div class="absolute md:top-1/2 md:right-12 ml-10 md:ml-0 top-[85%] transform -translate-y-1/2 ">
+      <img src="./assets/right-image.svg" alt="Right Side Image" class="md:w-[700px] w-80" />
+    </div>
+
+    <div class="w-full md:w-[423px] md:h-[245px] mt-64">
+      <form class="flex flex-col" onsubmit="handleFormSubmit(event)">
+        <!-- User ID Field -->
+        <div class="mb-8">
+          <label for="userId" class="block text-gray-100 font-semibold"
+            >User ID</label
+          >
+          <input
+            type="text"
+            id="userId"
+            name="userId"
+            class="w-full px-3 bg-transparent py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600"
+          />
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-8">
+          <label for="password" class="block text-gray-100 font-semibold"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="w-full px-3 py-2 bg-transparent border-b-2 border-gray-300 focus:outline-none focus:border-blue-600"
+          />
+        </div>
+        <div class="mb-8 relative">
+          <!-- Use relative positioning for dropdown positioning -->
+          <!-- Button to toggle dropdown -->
+          <button
+            id="dropdownDefaultButton"
+            onclick="toggleDropdown()"
+            class="w-full font-semibold inline-flex items-center justify-between text-center py-3 border-b-2 bg-transparent border-gray-300 focus:outline-none focus:border-blue-600"
+            type="button"
+          >
+            Login As
+            <!-- SVG icon -->
+            <svg
+              class="w-2.5 h-2.5 ms-3 mr-64"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 6"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 4 4 4-4"
+              />
+            </svg>
+          </button>
+
+          <!-- Dropdown menu -->
+          <div
+            id="dropdown"
+            class="z-10 hidden bg-blue-900 bg-opacity-50 divide-y divide-gray-100 rounded-lg shadow w-44 absolute mt-2 left-0"
+          >
+            <!-- Use absolute positioning for the dropdown -->
+            <ul
+              class="text-sm text-gray-700 dark:text-gray-200"
+              aria-labelledby="dropdownDefaultButton"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-40"
+                  onclick="selectItem('Staff')"
+                  >Staff</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-40"
+                  onclick="selectItem('Doctor')"
+                  >Doctor</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-blue-900 hover:bg-opacity-40"
+                  onclick="selectItem('Admin')"
+                  >Admin</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="w-full py-2 mt-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -24,6 +24,30 @@
         },
       };
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const allowedRoles = {
+          "/frontend/admin/admin.html": "Admin",
+          "/frontend/doctor/doctor.html": "Doctor",
+          "/frontend/staff/staff.html": "Staff",
+        };
+
+        const currentPage = window.location.pathname;
+        const userRole = localStorage.getItem("userRole");
+
+        if (allowedRoles[currentPage] !== userRole) {
+          window.location.href = "/frontend/404.html";
+        }
+        const signOutBtn = document.getElementById("sign-out-btn");
+        signOutBtn.addEventListener("click", function () {
+          //Only remove the role
+        // localStorage.removeItem("userRole")
+
+        localStorage.clear(); // Clear all local storage
+        window.location.href = '/frontend/login.html'; // Redirect to login page
+        });
+      });
+    </script>
     <script src="sideNav.js" defer></script>
     <script src="admin-functions.js" defer></script>
 
@@ -226,7 +250,7 @@
     </div>
     <!-- Main Content -->
     <main
-      class="mt-12 mx-auto transition-transform duration-500 ease-in-out content z-0 relative"
+      class="mx-auto transition-transform duration-500 ease-in-out content z-0 relative"
       id="main-content"
     >
       <div class="p-8">
@@ -247,65 +271,67 @@
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const navCheck = document.getElementById('navcheck');
-          const sidebar = document.getElementById('sidebar');
-          const mainContent = document.getElementById('main-content');
-          const hamburger = document.getElementById('hamburger');
-      
-          navCheck.addEventListener('change', function() {
-            if (this.checked) {
-              sidebar.style.transform = 'translateX(0)';
-              mainContent.style.transform = 'translateX(5rem)'; // Sidebar width
-              mainContent.style.filter = 'blur(4.75px)';
-      
-              // Transform hamburger to cross
-              hamburger.children[0].style.transform = 'rotate(45deg) translateY(7px)';
-              hamburger.children[1].style.opacity = '0';
-              hamburger.children[2].style.transform = 'rotate(-45deg) translateY(-7px)';
-            } else {
-              sidebar.style.transform = 'translateX(-100%)';
-              mainContent.style.transform = 'translateX(0)';
-              mainContent.style.filter = 'none';
-      
-              // Transform cross back to hamburger
-              hamburger.children[0].style.transform = 'rotate(0) translateY(0)';
-              hamburger.children[1].style.opacity = '1';
-              hamburger.children[2].style.transform = 'rotate(0) translateY(0)';
-            }
-          });
-      
-          // Close sidebar when clicking outside
-          document.addEventListener('click', function(event) {
-            if (
-              sidebar.style.transform === 'translateX(0px)' &&
-              !sidebar.contains(event.target) &&
-              !hamburger.contains(event.target) &&
-              !navCheck.contains(event.target)
-            ) {
-              navCheck.checked = false;
-              sidebar.style.transform = 'translateX(-100%)';
-              mainContent.style.transform = 'translateX(0)';
-              mainContent.style.filter = 'none';
-      
-              // Transform cross back to hamburger
-              hamburger.children[0].style.transform = 'rotate(0) translateY(0)';
-              hamburger.children[1].style.opacity = '1';
-              hamburger.children[2].style.transform = 'rotate(0) translateY(0)';
-            }
-          });
-      
-          // Add event listener to navigation items
-          const navItems = document.querySelectorAll('.nav-item');
-          navItems.forEach((item) => {
-            item.addEventListener('click', function() {
-              // Remove active class from all items
-              navItems.forEach((nav) => nav.classList.remove('nav-item-active'));
-              // Add active class to the clicked item
-              this.classList.add('nav-item-active');
-            });
+      document.addEventListener("DOMContentLoaded", function () {
+        const navCheck = document.getElementById("navcheck");
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        const hamburger = document.getElementById("hamburger");
+
+        navCheck.addEventListener("change", function () {
+          if (this.checked) {
+            sidebar.style.transform = "translateX(0)";
+            mainContent.style.transform = "translateX(5rem)"; // Sidebar width
+            mainContent.style.filter = "blur(4.75px)";
+
+            // Transform hamburger to cross
+            hamburger.children[0].style.transform =
+              "rotate(45deg) translateY(7px)";
+            hamburger.children[1].style.opacity = "0";
+            hamburger.children[2].style.transform =
+              "rotate(-45deg) translateY(-7px)";
+          } else {
+            sidebar.style.transform = "translateX(-100%)";
+            mainContent.style.transform = "translateX(0)";
+            mainContent.style.filter = "none";
+
+            // Transform cross back to hamburger
+            hamburger.children[0].style.transform = "rotate(0) translateY(0)";
+            hamburger.children[1].style.opacity = "1";
+            hamburger.children[2].style.transform = "rotate(0) translateY(0)";
+          }
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener("click", function (event) {
+          if (
+            sidebar.style.transform === "translateX(0px)" &&
+            !sidebar.contains(event.target) &&
+            !hamburger.contains(event.target) &&
+            !navCheck.contains(event.target)
+          ) {
+            navCheck.checked = false;
+            sidebar.style.transform = "translateX(-100%)";
+            mainContent.style.transform = "translateX(0)";
+            mainContent.style.filter = "none";
+
+            // Transform cross back to hamburger
+            hamburger.children[0].style.transform = "rotate(0) translateY(0)";
+            hamburger.children[1].style.opacity = "1";
+            hamburger.children[2].style.transform = "rotate(0) translateY(0)";
+          }
+        });
+
+        // Add event listener to navigation items
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            // Remove active class from all items
+            navItems.forEach((nav) => nav.classList.remove("nav-item-active"));
+            // Add active class to the clicked item
+            this.classList.add("nav-item-active");
           });
         });
-      </script>
+      });
+    </script>
   </body>
 </html>
