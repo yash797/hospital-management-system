@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="appointmentBooking.css">
+    <script src="appointmentBooking.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Appointment Booking</h2>
+        <form id="appointmentForm">
+            <label for="patientId">Patient ID:</label>
+            <input type="text" id="patientId" name="patientId" required>
+
+            <label for="doctorId">Doctor:</label>
+            <select id="doctorId" name="doctorId" required>
+                <option value="">Select Doctor</option>
+                <!-- Add options dynamically via JS -->
+            </select>
+
+            <label for="appointmentDate">Appointment Date:</label>
+            <input type="date" id="appointmentDate" name="appointmentDate" required>
+
+            <label for="appointmentTime">Appointment Time:</label>
+            <select id="appointmentTime" name="appointmentTime" required>
+                <option value="">Select Time</option>
+            </select>
+
+            <label for="reason">Reason for Visit:</label>
+            <textarea id="reason" name="reason" rows="4"></textarea>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+    
+</body>
+</html>

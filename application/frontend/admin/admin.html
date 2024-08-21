@@ -27,16 +27,16 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const allowedRoles = {
-          "/frontend/admin/admin.html": "Admin",
-          "/frontend/doctor/doctor.html": "Doctor",
-          "/frontend/staff/staff.html": "Staff",
+          "/application/frontend/admin/admin.html": "Admin",
+          "/application/frontend/doctor/doctor.html": "Doctor",
+          "/application/frontend/staff/staff.html": "Staff",
         };
 
         const currentPage = window.location.pathname;
         const userRole = localStorage.getItem("userRole");
 
         if (allowedRoles[currentPage] !== userRole) {
-          window.location.href = "/frontend/404.html";
+          window.location.href = "/application/frontend/404.html";
         }
         const signOutBtn = document.getElementById("sign-out-btn");
         signOutBtn.addEventListener("click", function () {
@@ -44,7 +44,7 @@
         // localStorage.removeItem("userRole")
 
         localStorage.clear(); // Clear all local storage
-        window.location.href = '/frontend/login.html'; // Redirect to login page
+        window.location.href = '/application/frontend/login.html'; // Redirect to login page
         });
       });
     </script>
