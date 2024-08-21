@@ -32,7 +32,7 @@
         if (userRole) {
           const roleLowerCase = userRole.toLowerCase(); // Convert role to lowercase
           backLink.textContent = `Back to ${userRole} page`;
-          backLink.href = `/application/frontend/${roleLowerCase}/${roleLowerCase}.html`; // Format URL based on role
+          backLink.href = `${roleLowerCase}/${roleLowerCase}.html`; // Format URL based on role
         } else {
           backLink.textContent = 'Back to homepage'; // Fallback text
           backLink.href = '/'; // Fallback URL
@@ -45,7 +45,7 @@
         // localStorage.removeItem("userRole")
 
         localStorage.clear(); // Clear all local storage
-        window.location.href = '/application/frontend/login.html'; // Redirect to login page
+        window.location.href = 'login.html'; // Redirect to login page
       }
 
       // Call function on page load
