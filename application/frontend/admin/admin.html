@@ -27,9 +27,9 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const allowedRoles = {
-          "admin/admin.html": "Admin",
-          "doctor/doctor.html": "Doctor",
-          "staff/staff.html": "Staff",
+          "/application/frontend/admin/admin.html": "Admin",
+          "/application/frontend/doctor/doctor.html": "Doctor",
+          "/application/frontend/staff/staff.html": "Staff",
         };
 
         const currentPage = window.location.pathname;
@@ -44,7 +44,7 @@
         // localStorage.removeItem("userRole")
 
         localStorage.clear(); // Clear all local storage
-        window.location.href = 'login.html'; // Redirect to login page
+        window.location.href = '/application/frontend/login.html'; // Redirect to login page
         });
       });
     </script>

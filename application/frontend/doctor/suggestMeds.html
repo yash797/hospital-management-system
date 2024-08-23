@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
     <script src="sideNav.js" defer></script>
+   
     <script src="suggestMedsScript.js" defer></script> <!-- Updated to link the new JavaScript file -->
     <style>
         .nav-item-active {
@@ -88,7 +89,7 @@
                                 class="w-full border border-gray-400 rounded-lg p-2"></textarea>
                         </div>
                         <div class="flex justify-end">
-                            <button type="button" class="bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600"
+                            <button onclick="viewMedication()" type="button" class="bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600"
                                 id="addMedicine">Add Medication</button>
                         </div>
                     </fieldset>
@@ -105,4 +106,13 @@
                 </div>
             </div>
 
-            <div class
+            <div class="FormButtonRow">
+                <button type="button" class="FormButton" id="savePrescription">Save Prescription</button>
+                <button type="button" class="FormButton" id="printPrescription">Print Prescription</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

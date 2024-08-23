@@ -1,28 +1,3 @@
-// sideNav.js
-
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.side-nav a');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const pageUrl = link.getAttribute('href');
-            fetchPageContent(pageUrl);
-        });
-    });
-});
-
-function fetchPageContent(url) {
-    fetch(url)
-        .then(response => response.text())
-        .then(html => {
-            document.querySelector('.content').innerHTML = html;
-            viewAppointmentSubmit();
-        })
-        .catch(error => console.error('Error fetching page content:', error));
-}
-
-
 function doctorSection() {
     document.addEventListener('DOMContentLoaded', function() {
         const navCheck = document.getElementById('navcheck');
@@ -412,11 +387,3 @@ function addTest() {
 function removeTest(element) {
     element.parentElement.remove();
 }
-
-
-
-
-
-
-
-

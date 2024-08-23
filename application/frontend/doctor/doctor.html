@@ -8,7 +8,10 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css"
       rel="stylesheet"
     /> -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -25,7 +28,7 @@
         },
       };
     </script>
-    <!-- <script>
+    <script>
       document.addEventListener("DOMContentLoaded", function () {
         const allowedRoles = {
           "/application/frontend/admin/admin.html": "Admin",
@@ -48,9 +51,9 @@
         window.location.href = '/application/frontend/login.html'; // Redirect to login page
         });
       });
-    </script> -->
+    </script>
     <script src="sideNav.js" defer></script>
-    <script src="admin-functions.js" defer></script>
+    <script src="doctorFunction.js" defer></script>
 
     <style>
       .content {
@@ -117,30 +120,24 @@
               class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2"
             >
               <a href="viewAppointment.html" class="block px-2 rounded-md"
-                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>View Appointment</a
+                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>View
+                Appointment</a
               >
             </li>
             <li
               class="nav-item bg-white text-[#006B82] shadow-xl shadow-gray-900/50 rounded-r-3xl pl-3 py-2"
             >
-              <a href="manage-users.html" class="block px-2 rounded-md"
-                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Manage
-                Users</a
+              <a href="suggestMeds.html" class="block px-2 rounded-md"
+                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Suggest
+                Medicines</a
               >
             </li>
             <li
               class="nav-item bg-white text-[#006B82] rounded-r-3xl shadow-xl shadow-gray-900/50 pl-3 py-2"
             >
-              <a href="show-patients.html" class="block px-2 rounded-md"
-                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Show All
-                Patients</a
-              >
-            </li>
-            <li
-              class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 py-2 shadow-xl shadow-gray-900/50 hover:text-"
-            >
-              <a href="reports.html" class="block px-2 rounded-md"
-                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Reports</a
+              <a href="suggestTest.html" class="block px-2 rounded-md"
+                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Suggest
+                Tests</a
               >
             </li>
           </ul>
