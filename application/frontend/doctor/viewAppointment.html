@@ -1,94 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Book Appointment</title>
-    <link rel="stylesheet" href="../DoctorSectionStyling/AddPatientStyle.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Main content -->
+    <div class="p-6 md:mx-28 mx-auto">
+        <h1 class="text-2xl font-bold mb-6">View Appointment</h1>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const appointments = [
-                { time: "10:30", type: "Follow Up", name: "Mansoor", date: "2024-08-16" },
-                { time: "12:30", type: "Consultancy", name: "Virat", date: "2024-08-16" },
-                { time: "14:30", type: "OPD", name: "Surya Kumar", date: "2024-08-17" },
-                { time: "16:30", type: "Treatment", name: "Narendra", date: "2024-08-17" },
-                { time: "09:00", type: "Consultancy", name: "Rohit", date: "2024-08-16" }
-            ];
-
-            const form = document.querySelector("form");
-            const appointmentList = document.querySelector(".AppointmentList");
-
-            form.addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                const appointmentDate = document.getElementById("appointmentDate").value;
-                const appointmentType = document.getElementById("appointmentType").value;
-
-                const filteredAppointments = appointments.filter(appointment => {
-                    return (appointmentType === "All" || appointment.type.toLowerCase() === appointmentType.toLowerCase()) &&
-                        (!appointmentDate || appointment.date === appointmentDate);
-                });
-
-                displayAppointments(filteredAppointments);
-            });
-
-            function displayAppointments(filteredAppointments) {
-                appointmentList.innerHTML = "";
-
-                if (filteredAppointments.length === 0) {
-                    appointmentList.innerHTML = "<p>No appointments found.</p>";
-                    return;
-                }
-
-                let appointmentListRow;
-
-                filteredAppointments.forEach((appointment, index) => {
-                    if (index % 2 === 0) {
-                        appointmentListRow = document.createElement("div");
-                        appointmentListRow.className = "AppointmentListRow";
-                        appointmentList.appendChild(appointmentListRow);
-                    }
-
-                    const appointmentCard = document.createElement("div");
-                    appointmentCard.className = "AppointmentCard";
-
-                    appointmentCard.innerHTML = `
-                        <div class="AppointmentTime">${appointment.time} | ${appointment.type}</div>
-                        <div class="AppointmentName">${appointment.name}</div>
-                        <div>View</div>
-                    `;
-
-                    appointmentListRow.appendChild(appointmentCard);
-                });
-            }
-        });
-    </script>
-</head>
-<body style="margin: 0; height: 100vh; width: 100vw;">
-<div class="MainBody">
-    <section class="SideNavBar">
-        <header>Menu</header>
-    </section>
-    <section class="PageBody">
-        <header class="FormHeader">View Appointment</header>
-        <div class="FormPage">
-            <form >
-                <fieldset class="FormFieldSet">
-                    <div class="FormRow">
-                        <div class="FormInputBox">
-                            <label for="appointmentDate">Appointment Date</label>
-                            <input type="date" id="appointmentDate" required>
+        <!-- Show All Doctors Section -->
+        <section class="bg-white p-6 border border-gray-300 rounded-lg shadow-md mb-6">
+            <form>
+                <div id="viewAppointmentsForm" class="border-0">
+                    <div class="flex flex-col md:flex-row md:justify-between mb-6">
+                        <div class="mb-4 md:w-1/2 md:mr-2">
+                            <label for="appointmentDate" class="block text-lg font-medium mb-2">Appointment Date</label>
+                            <input type="date" id="appointmentDate" required
+                                class="w-full border border-gray-400 rounded-lg p-2">
                         </div>
-                        <div class="FormInputBox">
-                            <label for="appointmentType">Appointment Type</label>
-                            <select id="appointmentType" required>
+                        <div class="md:w-1/2 md:ml-2">
+                            <label for="appointmentType" class="block text-lg font-medium mb-2">Appointment Type</label>
+                            <select id="appointmentType" required class="w-full border border-gray-400 rounded-lg p-2">
                                 <option selected disabled>Select Appointment Type</option>
-                                <option value="All" >All</option>
+                                <option value="All">All</option>
                                 <option value="consultancy">Consultancy</option>
                                 <option value="opd">OPD</option>
                                 <option value="follwUp">Follow Up</option>
@@ -96,18 +24,24 @@
                             </select>
                         </div>
                     </div>
-                    <div class="FormButtonRow">
-                        <button type="submit" class="FormButton">SUBMIT</button>
-                        <button type="reset" class="FormButton">RESET</button>
+                    <div class="flex justify-evenly">
+                        <button type="submit"
+                        onclick="viewAppointmentSubmit()"
+                            class="w-1/3 bg-gray-200 text-gray-700 font-medium py-2 rounded-lg border border-gray-400 hover:bg-gray-300">
+                            SUBMIT
+                        </button>
+                        <button type="reset"
+                            class="w-1/3 bg-gray-200 text-gray-700 font-medium py-2 rounded-lg border border-gray-400 hover:bg-gray-300">
+                            RESET
+                        </button>
                     </div>
-                </fieldset>
+                </div>
             </form>
-            <hr style="height: 1px;width: 100%; color: black">
-            <div class="AppointmentList">
+        </section>
+
+        <section>
+            <div class="AppointmentList flex flex-wrap justify-between">
                 <!-- Filtered appointments will be displayed here -->
             </div>
-        </div>
-    </section>
-</div>
-</body>
-</html>
+        </section>
+    </div>
