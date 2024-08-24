@@ -29,7 +29,9 @@
       function selectItem(value) {
         const button = document.getElementById("dropdownDefaultButton");
         button.firstChild.textContent = value; // Update button text
+        const userId = document.getElementById('userId').value;
         toggleDropdown(); // Close the dropdown
+        localStorage.setItem("userId", userId)
         localStorage.setItem("userRole", value); // Store the selected role in session storage
       }
 
