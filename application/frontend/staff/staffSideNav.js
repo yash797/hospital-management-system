@@ -1,30 +1,36 @@
-// sideNav.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.side-nav a');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const pageUrl = link.getAttribute('href');
-            fetchPageContent(pageUrl);
-        });
-    });
+  const navLinks = document.querySelectorAll('.side-nav a');
+  
+  navLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const pageUrl = link.getAttribute('href');
+          fetchPageContent(pageUrl);
+      });
+  });
 });
 
 function fetchPageContent(url) {
-    fetch(url)
-        .then(response => response.text())
-        .then(html => {
-            document.querySelector('.content').innerHTML = html;
-            registerPatient();
-            initSchedule();
-        })
-        .catch(error => console.error('Error fetching page content:', error));
+  fetch(url)
+      .then(response => response.text())
+      .then(html => {
+          document.querySelector('.content').innerHTML = html;
+
+          // Initialize forms only if they exist on the loaded page
+          if (url.includes('patientRegistration.html')) {
+              document.getElementById('registerButton').addEventListener('click', registerPatient);
+          }
+          if (url.includes('doctorSchedule.html')) {
+              initSchedule();
+          }
+      })
+      .catch(error => console.error('Error fetching page content:', error));
 }
+
 
 function registerPatient() {
     const firstName = document.getElementById('firstName').value;
+    const middleName = document.getElementById('middleName').value
     const lastName = document.getElementById('lastName').value;
     const gender = document.getElementById('gender').value;   
 
@@ -47,6 +53,7 @@ function registerPatient() {
     const patient = {
       patientID,
       firstName,
+      middleName,
       lastName,
       gender,
       email,
@@ -99,7 +106,7 @@ function checkSchedule() {
 
   const patient = getPatientData();
   document.getElementById('patientID').value = patient.patientID;
-  document.getElementById('patientName').value = `${patient.firstName} ${patient.lastName}`;
+  document.getElementById('patientName').value = `${patient.firstName} ${patient.middleName} ${patient.lastName}`;
 
   const appointmentList = getAppointmentList();
   const doctorAppointments = appointmentList.filter(
