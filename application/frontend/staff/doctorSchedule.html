@@ -1,86 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doctor Schedule</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <script src="doctorSchedule.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const allowedRoles = {
-                "admin/admin.html": "Admin",
-                "doctor/doctor.html": "Doctor",
-                "staff/staff.html": "Staff",
-            };
-        
-            const currentPage = window.location.pathname;
-            const userRole = localStorage.getItem("userRole");
-        
-            console.log('Current Page:', currentPage);
-            console.log('User Role:', userRole);
-        
-            if (allowedRoles[currentPage] !== userRole) {
-                window.location.href = "404.html";
-            }
-        });
-    </script>
-</head>
-<body class="bg-gray-100 p-8">
-    <!-- Main Content -->
-    <div class="content p-6 md:mx-12 mx-auto">
-        <div class="p-10 md:mx-24 mx-auto bg-white rounded-xl">
-          <h1 class="text-2xl font-bold mb-6 text-[#006B82]">Manage Users</h1>
-          <div class="bg-[#E5E5E5] p-10 rounded-xl">
-        <div class="mb-6">
-            <label class="block text-gray-700 font-medium">Doctor Name</label>
-            <select id="doctorName" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="Dr. Smith">Dr. Smith</option>
-                <option value="Dr. Johnson">Dr. Johnson</option>
-                <option value="Dr. Williams">Dr. Williams</option>
-            </select>
-        </div>
-        <div class="mb-6">
-            <label class="block text-gray-700 font-medium">Select Date</label>
-            <input type="date" id="appointmentDate" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200" onclick="checkSchedule()">Check Schedule</button>
+<div class="content p-6 md:mx-12 mx-auto">
+    <div class="p-10 md:mx-24 mx-auto bg-white rounded-xl">
+        <h1 class="text-2xl font-bold mb-6 text-[#006B82] text-center">Doctor Schedule</h1>
+        <div class="bg-[#E5E5E5] p-10 rounded-xl">
+            <div class="mb-6">
+                <label class="block text-gray-700 font-medium">Doctor Name</label>
+                <select id="doctorName" class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="Dr. Smith">Dr. Smith</option>
+                    <option value="Dr. Johnson">Dr. Johnson</option>
+                    <option value="Dr. Williams">Dr. Williams</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 font-medium">Select Date</label>
+                <input type="date" id="appointmentDate" class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <button class="w-full bg-[#0092b3] hover:bg-[#006B82] text-white py-3 rounded-xl font-semibold" onclick="checkSchedule()">Check Schedule</button>
 
-        <div id="scheduleDetails" class="mt-8 bg-gray-50 p-6 rounded-lg shadow-inner"></div>
+            <!-- This div will be hidden initially -->
+            <div id="scheduleDetails" class="mt-8 bg-gray-50 p-6 rounded-xl shadow-inner hidden"></div>
 
-        <div id="appointmentForm" class="mt-8 hidden bg-gray-50 p-6 rounded-lg shadow-inner">
-            <h3 class="text-2xl font-semibold mb-4 text-green-600">Book Appointment</h3>
-            <form id="appointmentBookingForm">
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium">Patient ID</label>
-                    <input type="text" id="patientID" class="w-full px-4 py-3 border rounded-lg bg-gray-100 focus:outline-none" readonly />
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium">Patient Name</label>
-                    <input type="text" id="patientName" class="w-full px-4 py-3 border rounded-lg bg-gray-100 focus:outline-none" readonly />
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium">Doctor Name</label>
-                    <input type="text" id="selectedDoctorName" class="w-full px-4 py-3 border rounded-lg bg-gray-100 focus:outline-none" readonly />
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium">Date</label>
-                    <input type="text" id="selectedDate" class="w-full px-4 py-3 border rounded-lg bg-gray-100 focus:outline-none" readonly />
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium">Select Time</label>
-                    <select id="timeSlot" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
-                    <div id="endTimeDisplay" class="mt-2 text-sm text-gray-700"></div>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-medium">Reason for Appointment</label>
-                    <textarea id="appointmentReason" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                </div>
-                <button type="button" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200" onclick="bookAppointment()">Book Appointment</button>
-            </form>
+            <!-- This div for the appointment form will also be hidden initially -->
+            <div id="appointmentForm" class="mt-8 hidden bg-gray-50 p-6 rounded-xl shadow-inner">
+                <h3 class="text-2xl font-semibold mb-4 text-green-600">Book Appointment</h3>
+                <form id="appointmentBookingForm">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium">Patient ID</label>
+                        <input type="text" id="patientID" class="w-full px-4 py-3 border rounded-xl bg-gray-100 focus:outline-none" readonly />
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium">Patient Name</label>
+                        <input type="text" id="patientName" class="w-full px-4 py-3 border rounded-xl bg-gray-100 focus:outline-none" readonly />
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium">Doctor Name</label>
+                        <input type="text" id="selectedDoctorName" class="w-full px-4 py-3 border rounded-xl bg-gray-100 focus:outline-none" readonly />
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium">Date</label>
+                        <input type="text" id="selectedDate" class="w-full px-4 py-3 border rounded-xl bg-gray-100 focus:outline-none" readonly />
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium">Select Time</label>
+                        <select id="timeSlot" class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"></select>
+                        <div id="endTimeDisplay" class="mt-2 text-sm text-gray-700"></div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium">Reason for Appointment</label>
+                        <textarea id="appointmentReason" class="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-[#0092b3] hover:bg-[#006B82] text-white py-3 rounded-xl font-semibold" onclick="bookAppointment()">Book Appointment</button>
+                </form>
+            </div>
         </div>
     </div>
-    </div>
-    </div>
-</body>
-</html>
+</div>
