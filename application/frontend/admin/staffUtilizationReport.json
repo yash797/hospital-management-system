@@ -1,0 +1,51 @@
+{
+    "timePeriods": ["Week 1", "Week 2", "Week 3", "Week 4"],
+    "staffUtilization": [
+      {
+        "name": "Amit",
+        "activities": {
+          "Week 1": { "registerPatients": 30, "bookAppointments": 20 },
+          "Week 2": { "registerPatients": 25, "bookAppointments": 25 },
+          "Week 3": { "registerPatients": 35, "bookAppointments": 15 },
+          "Week 4": { "registerPatients": 40, "bookAppointments": 30 }
+        }
+      },
+      {
+        "name": "Priya",
+        "activities": {
+          "Week 1": { "registerPatients": 20, "bookAppointments": 25 },
+          "Week 2": { "registerPatients": 15, "bookAppointments": 20 },
+          "Week 3": { "registerPatients": 25, "bookAppointments": 10 },
+          "Week 4": { "registerPatients": 30, "bookAppointments": 15 }
+        }
+      },
+      {
+        "name": "Rajesh",
+        "activities": {
+          "Week 1": { "registerPatients": 25, "bookAppointments": 30 },
+          "Week 2": { "registerPatients": 30, "bookAppointments": 25 },
+          "Week 3": { "registerPatients": 20, "bookAppointments": 20 },
+          "Week 4": { "registerPatients": 15, "bookAppointments": 25 }
+        }
+      },
+      {
+        "name": "Anjali",
+        "activities": {
+          "Week 1": { "registerPatients": 15, "bookAppointments": 20 },
+          "Week 2": { "registerPatients": 20, "bookAppointments": 15 },
+          "Week 3": { "registerPatients": 35, "bookAppointments": 30 },
+          "Week 4": { "registerPatients": 25, "bookAppointments": 25 }
+        }
+      },
+      {
+        "name": "Ravi",
+        "activities": {
+          "Week 1": { "registerPatients": 30, "bookAppointments": 15 },
+          "Week 2": { "registerPatients": 25, "bookAppointments": 20 },
+          "Week 3": { "registerPatients": 40, "bookAppointments": 25 },
+          "Week 4": { "registerPatients": 35, "bookAppointments": 30 }
+        }
+      }
+    ]
+  }
+  

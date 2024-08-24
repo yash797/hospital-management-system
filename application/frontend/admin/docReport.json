@@ -1,0 +1,66 @@
+{
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "appointments": [
+      {
+        "doctor": "Dr. Emily Smith (Cardiologist)",
+        "appointments_count": {
+          "Monday": 5,
+          "Tuesday": 9,
+          "Wednesday": 4,
+          "Thursday": 8,
+          "Friday": 4,
+          "Saturday": 2,
+          "Sunday": 1
+        }
+      },
+      {
+        "doctor": "Dr. James Johnson (Dermatologist)",
+        "appointments_count": {
+          "Monday": 8,
+          "Tuesday": 9,
+          "Wednesday": 3,
+          "Thursday": 7,
+          "Friday": 5,
+          "Saturday": 7,
+          "Sunday": 2
+        }
+      },
+      {
+        "doctor": "Dr. Linda Lee (Pediatrician)",
+        "appointments_count": {
+          "Monday": 3,
+          "Tuesday": 6,
+          "Wednesday": 9,
+          "Thursday": 8,
+          "Friday": 8,
+          "Saturday": 4,
+          "Sunday": 3
+        }
+      },
+      {
+        "doctor": "Dr. Robert Brown (Orthopedic)",
+        "appointments_count": {
+          "Monday": 6,
+          "Tuesday": 8,
+          "Wednesday": 6,
+          "Thursday": 6,
+          "Friday": 5,
+          "Saturday": 3,
+          "Sunday": 2
+        }
+      },
+      {
+        "doctor": "Dr. Sarah Wilson (Gynecologist)",
+        "appointments_count": {
+          "Monday": 5,
+          "Tuesday": 7,
+          "Wednesday": 6,
+          "Thursday": 5,
+          "Friday": 5,
+          "Saturday": 3,
+          "Sunday": 3
+        }
+      }
+    ]
+  }
+  

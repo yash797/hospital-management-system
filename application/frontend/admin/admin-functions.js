@@ -113,12 +113,6 @@ function filterPatients() {
   });
 }
 
-function generateReport() {
-  // Implement report generation functionality here
-  document.getElementById("reportResults").innerHTML =
-    "<p>Report generation functionality not yet implemented.</p>";
-}
-
 function toggleDoctorFields() {
   const roleSelect = document.getElementById("role");
   const doctorFields = document.getElementById("doctorFields");
@@ -127,4 +121,315 @@ function toggleDoctorFields() {
   } else {
     doctorFields.style.display = "none";
   }
+}
+
+function generateReport() {
+  const reportType = document.getElementById("reportType").value;
+  loadContent(reportType);
+}
+
+function loadContent(file) {
+  fetch(file)
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("reportResults").innerHTML = data;
+      // if (file === "staffUtilizationReport.json") {
+      //   staffUtilizationReport();
+      // }
+    })
+    .catch((error) => console.error("Error loading content:", error));
+}
+function generateStaffUtilizationReport() {
+  const Staffbutton = document.getElementById("generateStaff");
+  Staffbutton.disabled = true;
+
+  // Update the button's class
+  Staffbutton.className =
+    "bg-[#006B82] text-white px-4 py-2 rounded-md cursor-not-allowed";
+
+  // Fetch data from staffUtilizationReport.json
+  fetch("staffUtilizationReport.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const timePeriods = data.timePeriods;
+      const staffUtilization = data.staffUtilization;
+
+      // Define colors for each staff member
+      const colors = [
+        "rgba(255, 99, 132, 0.6)", // Red
+        "rgba(54, 162, 235, 0.6)", // Blue
+        "rgba(255, 206, 86, 0.6)", // Yellow
+        "rgba(75, 192, 192, 0.6)", // Green
+        "rgba(153, 102, 255, 0.6)", // Purple
+      ];
+
+      // Prepare datasets for Registered Patients
+      const registeredPatientsData = staffUtilization.map((staff, index) => ({
+        label: staff.name,
+        data: timePeriods.map(
+          (period) => staff.activities[period].registerPatients
+        ),
+        backgroundColor: colors[index],
+        borderColor: colors[index],
+        borderWidth: 1,
+      }));
+
+      // Prepare datasets for Booked Appointments
+      const bookAppointmentsData = staffUtilization.map((staff, index) => ({
+        label: staff.name,
+        data: timePeriods.map(
+          (period) => staff.activities[period].bookAppointments
+        ),
+        backgroundColor: colors[index],
+        borderColor: colors[index],
+        borderWidth: 1,
+      }));
+
+      // Create the Registered Patients Chart
+      const ctxRegisteredPatients = document
+        .getElementById("registeredPatientsChart")
+        .getContext("2d");
+      new Chart(ctxRegisteredPatients, {
+        type: "bar",
+        data: {
+          labels: timePeriods,
+          datasets: registeredPatientsData,
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+              labels: {
+                boxWidth: 15,
+                padding: 10,
+              },
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.dataset.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  if (context.parsed.y !== null) {
+                    label += context.parsed.y + " patients";
+                  }
+                  return label;
+                },
+              },
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "Time Period",
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Number of Registered Patients",
+              },
+            },
+          },
+        },
+      });
+
+      // Create the Booked Appointments Chart
+      const ctxBookAppointments = document
+        .getElementById("bookAppointmentsChart")
+        .getContext("2d");
+      new Chart(ctxBookAppointments, {
+        type: "bar",
+        data: {
+          labels: timePeriods,
+          datasets: bookAppointmentsData,
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+              labels: {
+                boxWidth: 15,
+                padding: 10,
+              },
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.dataset.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  if (context.parsed.y !== null) {
+                    label += context.parsed.y + " appointments";
+                  }
+                  return label;
+                },
+              },
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "Time Period",
+              },
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Number of Booked Appointments",
+              },
+            },
+          },
+        },
+      });
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+}
+
+function generatePatientStatistics() {
+  const Staffbutton = document.getElementById("generateStaff");
+  Staffbutton.disabled = true;
+
+  // Update the button's class
+  Staffbutton.className =
+    "bg-[#006B82] text-white px-4 py-2 rounded-md cursor-not-allowed";
+  fetch("patientStatistics.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const diagnosisTypes = data.patientStatistics.map(
+        (item) => item.diagnosisType
+      );
+      const patientCounts = data.patientStatistics.map(
+        (item) => item.patientCount
+      );
+
+      const ctx = document.getElementById("chart").getContext("2d");
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: diagnosisTypes,
+          datasets: [
+            {
+              label: "Diagnosis Types",
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#4BC0C0",
+                "#9966FF",
+              ],
+              data: patientCounts,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "top",
+              labels: {
+                color: "#333",
+              },
+            },
+            tooltip: {
+              callbacks: {
+                label: function (tooltipItem) {
+                  const total = tooltipItem.chart.data.datasets[0].data.reduce(
+                    (acc, val) => acc + val,
+                    0
+                  );
+                  const currentValue = tooltipItem.raw;
+                  const percentage = ((currentValue / total) * 100).toFixed(2);
+                  return `${tooltipItem.label}: ${currentValue} patients (${percentage}%)`;
+                },
+              },
+            },
+            title: {
+              display: true,
+              text: "Patient Distribution by Diagnosis Type",
+              font: {
+                size: 16,
+              },
+            },
+          },
+        },
+      });
+    })
+    .catch((error) =>
+      console.error("Error loading patient statistics:", error)
+    );
+}
+
+function generateDoctorAppointment() {
+  // Fetch data from docReport.json
+  fetch("docReport.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const ctx = document.getElementById("appointmentChart").getContext("2d");
+
+      // Define a set of blue shades
+      const blueShades = [
+        "rgba(54, 162, 235, 0.6)", // Light Blue
+        "rgba(75, 192, 192, 0.6)", // Soft Blue
+        "rgba(153, 102, 255, 0.6)", // Medium Blue
+        "rgba(0, 123, 255, 0.6)", // Strong Blue
+        "rgba(0, 0, 255, 0.6)", // Deep Blue
+      ];
+
+      const chartData = {
+        labels: data.days,
+        datasets: data.appointments.map((appointment, index) => {
+          return {
+            label: appointment.doctor,
+            data: data.days.map(
+              (day) => appointment.appointments_count[day] || 0
+            ),
+            backgroundColor: blueShades[index % blueShades.length], // Cycle through the shades
+          };
+        }),
+      };
+
+      const appointmentChart = new Chart(ctx, {
+        type: "bar",
+        data: chartData,
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 12, // Set the maximum limit for the y-axis
+            },
+          },
+          plugins: {
+            legend: {
+              position: "top",
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.dataset.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  if (context.parsed.y !== null) {
+                    label += context.parsed.y + " appointments";
+                  }
+                  return label;
+                },
+              },
+            },
+          },
+        },
+      });
+    })
+    .catch((error) => console.error("Error fetching data:", error));
 }

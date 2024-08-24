@@ -41,10 +41,10 @@
         const signOutBtn = document.getElementById("sign-out-btn");
         signOutBtn.addEventListener("click", function () {
           //Only remove the role
-        // localStorage.removeItem("userRole")
+          // localStorage.removeItem("userRole")
 
-        localStorage.clear(); // Clear all local storage
-        window.location.href = '/application/frontend/login.html'; // Redirect to login page
+          localStorage.clear(); // Clear all local storage
+          window.location.href = "/application/frontend/login.html"; // Redirect to login page
         });
       });
     </script>
@@ -101,31 +101,26 @@
           <img
             src="../assets/staff.svg"
             alt="Doctor's Image"
-            class="w-24 h-24 mx-auto rounded-full"
+            class="w-24 h-24 mx-auto rounded-full mt-12"
           />
-          <h2 class="mt-4 text-xl font-semibold text-gray-200">Yash Pande</h2>
-          <p class="text-sm text-gray-200">yashpande2002@gmail.com</p>
-          <!-- <ul class="space-y-4 mt-6">
-                <li><a href="#" class="flex items-center text-gray-800"><i class="fa-solid fa-hospital-user mr-2"></i> Add Patients</a></li>
-                <li><a href="#" class="flex items-center text-gray-800"><i class="fa-solid fa-eye mr-2"></i> View Appointments</a></li>
-                <li><a href="#" class="flex items-center text-gray-800"><i class="fa-solid fa-calendar-plus mr-2"></i> Book Appointments</a></li>
-            </ul> -->
+          <h2 class="mt-4 text-xl font-semibold text-gray-200" id="userId"></h2>
+          <p class="text-sm text-gray-200" id="userRole"></p>
           <ul class="space-y-4 mt-6 text-left w-72">
-           
-  <li
-    class="nav-item bg-white text-[#006B82] rounded-r-3xl shadow-xl shadow-gray-900/50 pl-3 py-2"
-  >
-    <a href="patientRegistration.html" class="block px-2 rounded-md"
-      ><i class="fa-solid fa-user-plus -ml-4 mr-2"></i>Patient Registration</a
-    >
-  </li>
-  <li
-  class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2"
->
-  <a href="doctorSchedule.html" class="block px-2 rounded-md"
-    ><i class="fa-solid fa-calendar-alt -ml-4 mr-2"></i>Doctor Schedule</a
-  >
-</li>
+            <li
+              class="nav-item bg-white text-[#006B82] rounded-r-3xl shadow-xl shadow-gray-900/50 pl-3 py-2"
+            >
+              <a href="patientRegistration.html" class="block px-2 rounded-md"
+                ><i class="fa-solid fa-user-plus -ml-4 mr-2"></i>Patient
+                Registration</a
+              >
+            </li>
+            <li
+              class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2"
+            >
+              <a href="doctorSchedule.html" class="block px-2 rounded-md"
+                ><i class="fa-solid fa-calendar-alt -ml-4 mr-2"></i>Doctor
+                Schedule</a
+              >
             </li>
           </ul>
         </div>
@@ -237,83 +232,93 @@
       class="mx-auto transition-transform duration-500 ease-in-out content z-0 relative"
       id="main-content"
     >
-      <div class="p-8">
-        <h1 class="text-3xl font-bold text-blue-600 mb-4">Main Content</h1>
-        <p class="text-base text-gray-800 leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut
-          orci vitae lorem vestibulum volutpat. Mauris et vehicula metus, nec
-          egestas magna. Phasellus volutpat nisl ut nisl cursus, at dignissim
-          dui tincidunt. Vivamus non ante nec nisl condimentum facilisis.
-        </p>
-        <p class="mt-4 text-base text-gray-800 leading-relaxed">
-          Curabitur tristique, nisl sit amet cursus consectetur, arcu ligula
-          tincidunt urna, eget pellentesque metus dui vel mi. Vivamus vehicula
-          lorem ut arcu interdum, sed lacinia felis gravida. Integer at faucibus
-          nisl. Nulla facilisi.
-        </p>
+      <div class="text-center p-8">
+        <div class="text-4xl font-semibold text-gray-200 mt-16">
+          <span>Hello</span>
+          <span id="userIdMain"></span>
+        </div>
+        <div class="text-3xl mt-4 font-semibold">
+          <p>Welcome to</p>
+          <p>Global Hospital Management System</p>
+        </div>
+
+        <img
+          src="../assets/HospitalBuilding.png"
+          class="mx-auto md:mt-4 mt-20 md:w-[50%] w--[25%]"
+        />
       </div>
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const navCheck = document.getElementById('navcheck');
-          const sidebar = document.getElementById('sidebar');
-          const mainContent = document.getElementById('main-content');
-          const hamburger = document.getElementById('hamburger');
-      
-          navCheck.addEventListener('change', function() {
-            if (this.checked) {
-              sidebar.style.transform = 'translateX(0)';
-              mainContent.style.transform = 'translateX(5rem)'; // Sidebar width
-              mainContent.style.filter = 'blur(4.75px)';
-      
-              // Transform hamburger to cross
-              hamburger.children[0].style.transform = 'rotate(45deg) translateY(7px)';
-              hamburger.children[1].style.opacity = '0';
-              hamburger.children[2].style.transform = 'rotate(-45deg) translateY(-7px)';
-            } else {
-              sidebar.style.transform = 'translateX(-100%)';
-              mainContent.style.transform = 'translateX(0)';
-              mainContent.style.filter = 'none';
-      
-              // Transform cross back to hamburger
-              hamburger.children[0].style.transform = 'rotate(0) translateY(0)';
-              hamburger.children[1].style.opacity = '1';
-              hamburger.children[2].style.transform = 'rotate(0) translateY(0)';
-            }
-          });
-      
-          // Close sidebar when clicking outside
-          document.addEventListener('click', function(event) {
-            if (
-              sidebar.style.transform === 'translateX(0px)' &&
-              !sidebar.contains(event.target) &&
-              !hamburger.contains(event.target) &&
-              !navCheck.contains(event.target)
-            ) {
-              navCheck.checked = false;
-              sidebar.style.transform = 'translateX(-100%)';
-              mainContent.style.transform = 'translateX(0)';
-              mainContent.style.filter = 'none';
-      
-              // Transform cross back to hamburger
-              hamburger.children[0].style.transform = 'rotate(0) translateY(0)';
-              hamburger.children[1].style.opacity = '1';
-              hamburger.children[2].style.transform = 'rotate(0) translateY(0)';
-            }
-          });
-      
-          // Add event listener to navigation items
-          const navItems = document.querySelectorAll('.nav-item');
-          navItems.forEach((item) => {
-            item.addEventListener('click', function() {
-              // Remove active class from all items
-              navItems.forEach((nav) => nav.classList.remove('nav-item-active'));
-              // Add active class to the clicked item
-              this.classList.add('nav-item-active');
-            });
+      document.addEventListener("DOMContentLoaded", function () {
+        const userId = localStorage.getItem("userId");
+        const userIdMain = document.getElementById("userIdMain");
+        if (userIdMain) {
+          userIdMain.textContent = userId;
+        }
+        const userRole = localStorage.getItem("userRole");
+        document.getElementById("userId").textContent = userId;
+        document.getElementById("userRole").textContent = `(${userRole})`;
+        const navCheck = document.getElementById("navcheck");
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        const hamburger = document.getElementById("hamburger");
+
+        navCheck.addEventListener("change", function () {
+          if (this.checked) {
+            sidebar.style.transform = "translateX(0)";
+            mainContent.style.transform = "translateX(5rem)"; // Sidebar width
+            mainContent.style.filter = "blur(4.75px)";
+
+            // Transform hamburger to cross
+            hamburger.children[0].style.transform =
+              "rotate(45deg) translateY(7px)";
+            hamburger.children[1].style.opacity = "0";
+            hamburger.children[2].style.transform =
+              "rotate(-45deg) translateY(-7px)";
+          } else {
+            sidebar.style.transform = "translateX(-100%)";
+            mainContent.style.transform = "translateX(0)";
+            mainContent.style.filter = "none";
+
+            // Transform cross back to hamburger
+            hamburger.children[0].style.transform = "rotate(0) translateY(0)";
+            hamburger.children[1].style.opacity = "1";
+            hamburger.children[2].style.transform = "rotate(0) translateY(0)";
+          }
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener("click", function (event) {
+          if (
+            sidebar.style.transform === "translateX(0px)" &&
+            !sidebar.contains(event.target) &&
+            !hamburger.contains(event.target) &&
+            !navCheck.contains(event.target)
+          ) {
+            navCheck.checked = false;
+            sidebar.style.transform = "translateX(-100%)";
+            mainContent.style.transform = "translateX(0)";
+            mainContent.style.filter = "none";
+
+            // Transform cross back to hamburger
+            hamburger.children[0].style.transform = "rotate(0) translateY(0)";
+            hamburger.children[1].style.opacity = "1";
+            hamburger.children[2].style.transform = "rotate(0) translateY(0)";
+          }
+        });
+
+        // Add event listener to navigation items
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            // Remove active class from all items
+            navItems.forEach((nav) => nav.classList.remove("nav-item-active"));
+            // Add active class to the clicked item
+            this.classList.add("nav-item-active");
           });
         });
-      </script>
+      });
+    </script>
   </body>
 </html>

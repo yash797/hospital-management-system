@@ -1,0 +1,10 @@
+{
+    "patientStatistics": [
+      { "diagnosisType": "Cardiology", "patientCount": 150 },
+      { "diagnosisType": "Neurology", "patientCount": 100 },
+      { "diagnosisType": "Orthopedics", "patientCount": 120 },
+      { "diagnosisType": "Oncology", "patientCount": 80 },
+      { "diagnosisType": "Pediatrics", "patientCount": 70 }
+    ]
+  }
+  
