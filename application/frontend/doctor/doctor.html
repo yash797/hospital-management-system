@@ -45,10 +45,10 @@
         const signOutBtn = document.getElementById("sign-out-btn");
         signOutBtn.addEventListener("click", function () {
           //Only remove the role
-        // localStorage.removeItem("userRole")
+          // localStorage.removeItem("userRole")
 
-        localStorage.clear(); // Clear all local storage
-        window.location.href = '/application/frontend/login.html'; // Redirect to login page
+          localStorage.clear(); // Clear all local storage
+          window.location.href = "/application/frontend/login.html"; // Redirect to login page
         });
       });
     </script>
@@ -104,7 +104,7 @@
       >
         <div class="text-center mb-24">
           <img
-            src="admin.svg"
+            src="../assets/doctor.svg"
             alt="Doctor's Image"
             class="w-24 h-24 mx-auto rounded-full"
           />
@@ -119,26 +119,24 @@
             <li
               class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2"
             >
-              <a href="viewAppointment.html" class="block px-2 rounded-md"
-                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>View
-                Appointment</a
-              >
+              <a href="viewAppointment.html" class="block px-2 rounded-md">
+                <i class="fa-solid fa-calendar-check -ml-4 mr-2"></i>View
+                Appointment
+              </a>
             </li>
             <li
               class="nav-item bg-white text-[#006B82] shadow-xl shadow-gray-900/50 rounded-r-3xl pl-3 py-2"
             >
-              <a href="suggestMeds.html" class="block px-2 rounded-md"
-                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Suggest
-                Medicines</a
-              >
+              <a href="suggestMeds.html" class="block px-2 rounded-md">
+                <i class="fa-solid fa-pills -ml-4 mr-2"></i>Suggest Medicines
+              </a>
             </li>
             <li
               class="nav-item bg-white text-[#006B82] rounded-r-3xl shadow-xl shadow-gray-900/50 pl-3 py-2"
             >
-              <a href="suggestTest.html" class="block px-2 rounded-md"
-                ><i class="fa-solid fa-hospital-user -ml-4 mr-2"></i>Suggest
-                Tests</a
-              >
+              <a href="suggestTest.html" class="block px-2 rounded-md">
+                <i class="fa-solid fa-stethoscope -ml-4 mr-2"></i>Suggest Tests
+              </a>
             </li>
           </ul>
         </div>
