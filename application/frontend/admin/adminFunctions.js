@@ -1,5 +1,5 @@
-// admin-functions.js
-//show-patients
+// adminFunctions.js
+//showPatients
 
 // Handle file upload and import users
 function importUsers() {
