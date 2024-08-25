@@ -24,6 +24,58 @@
     };
   </script>
   <script>
+    function handleSignOut() {
+      localStorage.clear(); // Clear all local storage
+      window.location.href = "/application/frontend/login.html";
+    }
+  </script>
+  
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Redressed&display=swap");
+
+    :root {
+      --comfortaa: "Comfortaa", cursive;
+      --redressed: "Redressed", cursive;
+
+      --dark: #1c1c1c;
+      --light: #c4c4c4;
+      --teal: #008080;
+    }
+
+    .writter {
+      font-size: 1.2rem;
+      color: var(--light);
+    }
+
+    .typed-text {
+      font-size: 2.4rem;
+      font-family: var(--redressed);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      margin-left: 4px;
+      background: var(--teal);
+    }
+
+    .cursor.blink {
+      animation: blink 0.8s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%,
+      100% {
+        background: var(--teal);
+      }
+      40%,
+      50% {
+        background: transparent;
+      }
+    }
+  </style>
+  <script>
       document.addEventListener("DOMContentLoaded", function () {
         const allowedRoles = {
           "/application/frontend/admin/admin.html": "Admin",
@@ -249,17 +301,50 @@
       class="mx-auto transition-transform duration-500 ease-in-out content z-0 relative "
       id="main-content"
     >
-    <div class="text-center p-8">
-      <div class="text-4xl font-semibold text-[#006B82]">
-        <span>Hello</span>
-        <span id="userIdMain"></span>
+    <div class="grid grid-cols-1 lg:grid-cols-2 md:mx-20 mx-auto">
+      <div>
+      <div
+        class="my-auto mt-36 px-5 flex flex-col justify-start md:justify-center lg:justify-start"
+      >
+        <div class="text-5xl font-[comfortaa] text-gray-100">
+          <span >Hello</span>
+          <span id="userIdMain" class="font-[redressed]"></span>
+        </div>
+        <p class="writter mt-4">
+          Welcome to
+          <br/>
+          <span class="typed-text text-cyan-100"></span
+          ><span class="cursor blink">&nbsp;</span>
+        </p>
+        <p
+          class="mt-4 font-[comfortaa] text-[--light] text-lg"
+        >
+          As a Doctor, you can View Appointments, Suggest Medicines and Suggest Suitable Tests too..
+        </p>
       </div>
-      <div class="text-3xl mt-4 font-semibold ">
-        <p>Welcome to</p>
-        <p>Global Hospital Management System</p>
+      <div class="flex flex-col lg:flex-row lg:justify-around">
+        <button
+          onclick="toggleSidebar()"
+          class="w-full mt-8 font-secondary bg-yellow-300 hover:bg-yellow-400 transition duration-500 ease-in-out text-[#0092b3] font-semibold py-4 px-6 rounded lg:w-auto"
+        >
+          Explore
+        </button>
+        <button
+          id="sign-out-btn"
+          onclick="handleSignOut()"
+          class="w-full mt-4 font-secondary bg-red-500 hover:bg-red-600 transition duration-500 ease-in-out text-white font-semibold py-4 px-6 rounded lg:mt-8 lg:w-auto"
+        >
+          Log Out
+        </button>
       </div>
-      
-      <img src="../assets/HospitalBuilding.png" class="mx-auto mt-4" style="height: 60vh;">
+    </div>
+    <div class="px-5 mt-32 flex flex-col items-center">
+      <img
+        src="../assets/HospitalBuilding.png"
+        class="overflow-hidden mt-8 lg:mt-0"
+        alt="Yash"
+      />
+    </div>
     </div>
     </main>
 
@@ -333,6 +418,53 @@
           this.classList.add("nav-item-active");
         });
       });
+    });
+  </script>
+  <script>
+    const typedText = document.querySelector(".typed-text");
+    const cursor = document.querySelector(".cursor");
+
+    const textArray = [
+      "Hospital Management System",
+      "Hospital Management System",
+    ];
+
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    const erase = () => {
+      if (charIndex > 0) {
+        cursor.classList.remove("blink");
+        typedText.textContent = textArray[textArrayIndex].slice(
+          0,
+          charIndex - 1
+        );
+        charIndex--;
+        setTimeout(erase, 80);
+      } else {
+        cursor.classList.add("blink");
+        textArrayIndex++;
+        if (textArrayIndex > textArray.length - 1) {
+          textArrayIndex = 0;
+        }
+        setTimeout(type, 1000);
+      }
+    };
+
+    const type = () => {
+      if (charIndex <= textArray[textArrayIndex].length - 1) {
+        cursor.classList.remove("blink");
+        typedText.textContent += textArray[textArrayIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 120);
+      } else {
+        cursor.classList.add("blink");
+        setTimeout(erase, 1000);
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      type();
     });
   </script>
 </body>
