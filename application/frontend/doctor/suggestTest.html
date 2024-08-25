@@ -1,3 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Suggest Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="sideNav.js" defer></script>
+   
+    
+    <style>
+        .nav-item-active {
+            color: #ffb800 !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+            box-shadow: inset 0 0 0 1.5px #ffb800 !important;
+        }
+
+        .nav-item:hover {
+            color: #ffb800 !important;
+            box-shadow: inset 0 0 0 1.5px #ffb800 !important;
+        }
+    </style>
+</head>
+
+<body class="m-0 h-screen w-screen bg-gray-300 font-sans">
+
 <!-- Main content -->
 <div class="p-6 md:mx-28 mx-auto">
   <h1 class="text-2xl font-bold mb-6">Suggest Test</h1>
@@ -59,7 +90,7 @@
               </select>
             </div>
             <button
-              class="bg-blue-500 text-white py-2 px-4 rounded-lg"
+            class="w-1/3 bg-[#0092b3] hover:bg-[#006B82] text-white font-medium py-2 rounded-md border border-gray-400 hover:bg-gray-300"
               onclick="addTest()"
             >
               Add Test
@@ -78,10 +109,13 @@
 
       <!-- Summary and Submit Section -->
       <div class="mb-4">
-        <button class="bg-green-500 text-white py-2 px-4 rounded-lg">
+        <button class="w-1/3 bg-[#0092b3] hover:bg-[#006B82] text-white font-medium py-2 rounded-md border border-gray-400 hover:bg-gray-300">
           Submit Recommendations
         </button>
       </div>
     </div>
   </section>
 </div>
+
+</body>
+</html>
