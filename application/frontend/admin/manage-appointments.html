@@ -26,30 +26,53 @@
   <body>
     <!-- Main Content -->
     <div class="content p-6 md:mx-12 mx-auto">
-      <div class="p-10 md:mx-24 mx-auto bg-white rounded-xl ">
-        <h1 class="text-2xl font-bold mb-6 text-[#006B82]">Manage Doctor Appointments</h1>
+      <div class="md:p-10 p-2 md:mx-24 mx-auto bg-white rounded-xl">
+        
+          <h1 class="md:text-2xl text-xl font-bold mb-6 text-[#006B82]">
+            Manage Doctor Appointments
+          </h1>
 
-        <div class="bg-[#E5E5E5] p-10 rounded-xl">
-
+        <div class="md:bg-[#E5E5E5] md:p-10 p-2 rounded-xl">
+          <div class="md:left-32 md:top-60 top-28 left-0 absolute md:w-20 w-16 md:p-4 p-2 bg-white rounded-full">
+            <img
+              src="../assets/stethoscope.svg"
+              alt="stethoscope"
+              class="mx-auto"
+            />
+          </div>
           <!-- Show All Doctors Section -->
           <section class="bg-white p-6 border border-gray-300 rounded-xl mb-6">
-            <h2 class="text-xl font-semibold mb-4 text-[#006B82]">Show All Doctors</h2>
+            <h2 class="text-xl font-semibold mb-4 text-[#006B82]">
+              Show All Doctors
+            </h2>
             <div class="overflow-x-auto">
               <table class="min-w-full bg-white border border-gray-300">
                 <thead>
                   <tr class="">
-                    <th class="py-2 px-4 border-b text-[#888888] font-medium ">Doctor ID</th>
-                    <th class="py-2 px-4 border-b text-[#888888] font-medium">Name</th>
-                    <th class="py-2 px-4 border-b text-[#888888] font-medium">Specialization</th>
-                    <th class="py-2 px-4 border-b text-[#888888] font-medium">Schedule</th>
+                    <th class="py-2 px-4 border-b text-[#888888] font-medium">
+                      Doctor ID
+                    </th>
+                    <th class="py-2 px-4 border-b text-[#888888] font-medium">
+                      Name
+                    </th>
+                    <th class="py-2 px-4 border-b text-[#888888] font-medium">
+                      Specialization
+                    </th>
+                    <th class="py-2 px-4 border-b text-[#888888] font-medium">
+                      Schedule
+                    </th>
                   </tr>
                 </thead>
                 <tbody id="doctorTableBody" class="text-center">
                   <tr>
                     <td class="py-2 px-4 border-b text-[#444444]">D001</td>
                     <td class="py-2 px-4 border-b text-[#444444]">Dr. Smith</td>
-                    <td class="py-2 px-4 border-b text-[#444444]">Cardiology</td>
-                    <td class="py-2 px-4 border-b text-[#444444]">9:00 AM - 5:00 PM</td>
+                    <td class="py-2 px-4 border-b text-[#444444]">
+                      Cardiology
+                    </td>
+                    <td class="py-2 px-4 border-b text-[#444444]">
+                      9:00 AM - 5:00 PM
+                    </td>
                   </tr>
                   <!-- Add more rows as needed -->
                 </tbody>
@@ -59,7 +82,9 @@
 
           <!-- Cancel Appointments Section -->
           <section class="bg-white p-6 border border-gray-300 rounded-xl mb-6">
-            <h2 class="text-xl font-semibold mb-4 text-[#006B82]">Cancel Appointments</h2>
+            <h2 class="text-xl font-semibold mb-4 text-[#006B82]">
+              Cancel Appointments
+            </h2>
             <div class="mb-4">
               <label class="block mb-2">
                 <span class="text-gray-700">Select Date</span>
@@ -81,14 +106,22 @@
               id="appointmentResults"
               class="bg-white p-4 border border-gray-300 rounded-md"
             >
-              <h3 class="text-lg font-medium text-[#006B82] mb-2">Appointments</h3>
+              <h3 class="text-lg font-medium text-[#006B82] mb-2">
+                Appointments
+              </h3>
               <div class="overflow-x-auto">
                 <table class="min-w-full bg-white border border-gray-300">
                   <thead>
-                    <tr class="text-[#888888] ">
-                      <th class="py-2 px-4 border-b font-medium">Appointment ID</th>
-                      <th class="py-2 px-4 border-b font-medium">Patient Name</th>
-                      <th class="py-2 px-4 border-b font-medium">Doctor Name</th>
+                    <tr class="text-[#888888]">
+                      <th class="py-2 px-4 border-b font-medium">
+                        Appointment ID
+                      </th>
+                      <th class="py-2 px-4 border-b font-medium">
+                        Patient Name
+                      </th>
+                      <th class="py-2 px-4 border-b font-medium">
+                        Doctor Name
+                      </th>
                       <th class="py-2 px-4 border-b font-medium">Time</th>
                       <th class="py-2 px-4 border-b font-medium">Actions</th>
                     </tr>

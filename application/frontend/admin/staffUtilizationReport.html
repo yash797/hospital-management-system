@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff Utilization Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 flex flex-col items-center h-screen">
+    <div class="mb-8 -mt-28 p-6">
+      <button
+        id="generateStaff"
+        class="bg-[#0092b3] hover:bg-[#006B82] text-white px-4 py-2 rounded-md"
+        onclick="generateStaffUtilizationReport()"
+      >
+        Generate Staff Utilization Report
+      </button>
+    </div>
+    <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg mb-6">
+      <h2 class="text-xl font-semibold mb-4 text-[#006B82]">Registered Patients</h2>
+      <div>
+        <canvas id="registeredPatientsChart"></canvas>
+      </div>
+    </div>
+
+    <div class="container mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <h2 class="text-xl font-semibold mb-4 text-[#006B82]">Booked Appointments</h2>
+      <div>
+        <canvas id="bookAppointmentsChart"></canvas>
+      </div>
+    </div>
+  </body>
+</html>

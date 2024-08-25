@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Appointment Report</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="">
+  
+
+  <div class="mb-8 -mt-28 p-6">
+    <button
+      id="generateStaff"
+      class="bg-[#0092b3] hover:bg-[#006B82] text-white px-4 py-2 rounded-md"
+      onclick="generateDoctorAppointment()"
+    >
+      Generate Doctor Appointment Report
+    </button>
+  </div>
+<div class="container mx-auto">
+
+    <div class="mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold mb-4 text-[#006B82]">Doctor Appointment Report</h2>
+        <div class="relative w-full h-[50vh]">
+            <canvas id="appointmentChart"></canvas>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

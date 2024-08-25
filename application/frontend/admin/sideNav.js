@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       const pageUrl = link.getAttribute("href");
       fetchPageContent(pageUrl);
+      staffUtilizationReport();
     });
   });
 });
@@ -190,3 +191,146 @@ function initializePatientTable() {
       renderTable();
     });
 }
+
+function staffUtilizationReport(){
+  fetch('staffUtilizationReport.json')
+    .then(response => response.json())
+    .then(data => {
+      const timePeriods = data.timePeriods;
+      const staffUtilization = data.staffUtilization;
+  
+      // Define colors for each staff member
+      const colors = [
+        'rgba(255, 99, 132, 0.6)',  // Red
+        'rgba(54, 162, 235, 0.6)',  // Blue
+        'rgba(255, 206, 86, 0.6)',  // Yellow
+        'rgba(75, 192, 192, 0.6)',  // Green
+        'rgba(153, 102, 255, 0.6)'  // Purple
+      ];
+  
+      // Prepare datasets for Registered Patients
+      const registeredPatientsData = staffUtilization.map((staff, index) => ({
+        label: staff.name,
+        data: timePeriods.map(period => 
+          staff.activities[period].registerPatients
+        ),
+        backgroundColor: colors[index],
+        borderColor: colors[index],
+        borderWidth: 1
+      }));
+  
+      // Prepare datasets for Booked Appointments
+      const bookAppointmentsData = staffUtilization.map((staff, index) => ({
+        label: staff.name,
+        data: timePeriods.map(period => 
+          staff.activities[period].bookAppointments
+        ),
+        backgroundColor: colors[index],
+        borderColor: colors[index],
+        borderWidth: 1
+      }));
+  
+      // Create the Registered Patients Chart
+      const ctxRegisteredPatients = document.getElementById("registeredPatientsChart").getContext('2d');
+      new Chart(ctxRegisteredPatients, {
+        type: 'bar',
+        data: {
+          labels: timePeriods,
+          datasets: registeredPatientsData
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                boxWidth: 15,
+                padding: 10
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  let label = context.dataset.label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  if (context.parsed.y !== null) {
+                    label += context.parsed.y + ' patients';
+                  }
+                  return label;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Time Period'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Number of Registered Patients'
+              }
+            }
+          }
+        }
+      });
+  
+      // Create the Booked Appointments Chart
+      const ctxBookAppointments = document.getElementById("bookAppointmentsChart").getContext('2d');
+      new Chart(ctxBookAppointments, {
+        type: 'bar',
+        data: {
+          labels: timePeriods,
+          datasets: bookAppointmentsData
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                boxWidth: 15,
+                padding: 10
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  let label = context.dataset.label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  if (context.parsed.y !== null) {
+                    label += context.parsed.y + ' appointments';
+                  }
+                  return label;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Time Period'
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Number of Booked Appointments'
+              }
+            }
+          }
+        }
+      });
+    })
+    .catch(error => console.error('Error fetching data:', error));
+  }
