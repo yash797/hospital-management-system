@@ -1,14 +1,27 @@
-// sideNav.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.side-nav a');
+    const sideNavLinks = document.querySelectorAll('.side-nav a');
+    const bottomNavLinks = document.querySelectorAll('#bottombar a');
     
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const pageUrl = link.getAttribute('href');
+    const handleNavClick = (event) => {
+        event.preventDefault();
+        
+        // Get the closest anchor tag (a) element
+        const link = event.target.closest('a');
+        const pageUrl = link ? link.getAttribute('href') : null;
+        
+        if (pageUrl) {
             fetchPageContent(pageUrl);
-        });
+        } else {
+            console.error('Invalid URL: ', pageUrl);
+        }
+    };
+
+    sideNavLinks.forEach(link => {
+        link.addEventListener('click', handleNavClick);
+    });
+
+    bottomNavLinks.forEach(link => {
+        link.addEventListener('click', handleNavClick);
     });
 });
 
@@ -17,7 +30,7 @@ function fetchPageContent(url) {
         .then(response => response.text())
         .then(html => {
             document.querySelector('.content').innerHTML = html;
-            viewAppointmentSubmit();
+            viewAppointmentSubmit(); // If you have specific scripts to run after loading content, call them here.
         })
         .catch(error => console.error('Error fetching page content:', error));
 }

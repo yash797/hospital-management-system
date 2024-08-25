@@ -76,37 +76,88 @@
     }
   </style>
   <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const allowedRoles = {
-          "/application/frontend/admin/admin.html": "Admin",
-          "/application/frontend/doctor/doctor.html": "Doctor",
-          "/application/frontend/staff/staff.html": "Staff",
-        };
+    function handleSignOut() {
+      localStorage.clear(); // Clear all local storage
+      window.location.href = "/application/frontend/login.html";
+    }
+  </script>
+  
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Redressed&display=swap");
 
-        const currentPage = window.location.pathname;
-        const userRole = localStorage.getItem("userRole");
+    :root {
+      --comfortaa: "Comfortaa", cursive;
+      --redressed: "Redressed", cursive;
 
-        if (allowedRoles[currentPage] !== userRole) {
-          window.location.href = "/application/frontend/404.html";
-        }
-        const signOutBtn = document.getElementById("sign-out-btn");
-        signOutBtn.addEventListener("click", function () {
-          //Only remove the role
-          // localStorage.removeItem("userRole")
+      --dark: #1c1c1c;
+      --light: #c4c4c4;
+      --teal: #008080;
+    }
 
-          localStorage.clear(); // Clear all local storage
-          window.location.href = "/application/frontend/login.html"; // Redirect to login page
-        });
+    .writter {
+      font-size: 1.2rem;
+      color: var(--light);
+    }
+
+    .typed-text {
+      font-size: 2.4rem;
+      font-family: var(--redressed);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      margin-left: 4px;
+      background: var(--teal);
+    }
+
+    .cursor.blink {
+      animation: blink 0.8s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%,
+      100% {
+        background: var(--teal);
+      }
+      40%,
+      50% {
+        background: transparent;
+      }
+    }
+  </style>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const allowedRoles = {
+        "/application/frontend/admin/admin.html": "Admin",
+        "/application/frontend/doctor/doctor.html": "Doctor",
+        "/application/frontend/staff/staff.html": "Staff",
+      };
+
+
+      const currentPage = window.location.pathname;
+      const userRole = localStorage.getItem("userRole");
+
+      if (allowedRoles[currentPage] !== userRole) {
+        window.location.href = "/application/frontend/404.html";
+      }
+      const signOutBtn = document.getElementById("sign-out-btn");
+      signOutBtn.addEventListener("click", function () {
+        //Only remove the role
+        // localStorage.removeItem("userRole")
+
+        localStorage.clear(); // Clear all local storage
+        window.location.href = "/application/frontend/login.html"; // Redirect to login page
       });
-    </script>
+
+    });
+  </script>
+
   <script src="sideNav.js" defer></script>
   <script src="doctorFunction.js" defer></script>
 
-  <style>
-    .content {
-      margin-left: 16rem;
-    }
-  </style>
   <style>
     .nav-item-active {
       color: #ffb800 !important;
@@ -139,152 +190,39 @@
 
 
 
-      <!-- Sidebar -->
-      <!-- <nav id="sidebar" class="fixed bg-transparent top-0 left-0 w-64 h-full shadow-xl shadow-gray-900/50 transform -translate-x-full transition-transform duration-500 ease-in-out z-20 py-4 flex flex-col"> -->
-      <nav
-        id="sidebar"
-        class="fixed bg-opacity-20 shadow-2xl z-10 absolute left-0 w-80 h-[120vh] transform -translate-x-full transition-transform duration-500 ease-in-out z-20 py-4 flex flex-col"
-      >
-        <div class="text-center mb-24">
-          <img
-            src="../assets/doctor.svg"
-            alt="Doctor's Image"
-            class="w-24 h-24 mx-auto rounded-full mt-12"
-          />
-          <h2 class="mt-4 text-xl font-semibold text-gray-200" id="userId"></h2>
-          <p class="text-sm text-gray-200" id="userRole"></p>
-          <!-- <ul class="space-y-4 mt-6">
+
+    <!-- Sidebar -->
+    <!-- <nav id="sidebar" class="fixed bg-transparent top-0 left-0 w-64 h-full shadow-xl shadow-gray-900/50 transform -translate-x-full transition-transform duration-500 ease-in-out z-20 py-4 flex flex-col"> -->
+    <nav id="sidebar"
+      class="fixed bg-opacity-20 shadow-2xl z-10 absolute left-0 w-80 h-[120vh] transform -translate-x-full transition-transform duration-500 ease-in-out z-20 py-4 flex flex-col">
+      <div class="text-center mb-24 ">
+        <img src="../assets/doctor.svg" alt="Doctor's Image" class="w-24 h-24 mx-auto rounded-full mt-12" />
+        <h2 class="mt-4 text-xl font-semibold text-gray-200" id="userId"></h2>
+        <p class="text-sm text-gray-200" id="userRole"></p>
+        <!-- <ul class="space-y-4 mt-6">
                 <li><a href="#" class="flex items-center text-gray-800"><i class="fa-solid fa-hospital-user mr-2"></i> Add Patients</a></li>
                 <li><a href="#" class="flex items-center text-gray-800"><i class="fa-solid fa-eye mr-2"></i> View Appointments</a></li>
                 <li><a href="#" class="flex items-center text-gray-800"><i class="fa-solid fa-calendar-plus mr-2"></i> Book Appointments</a></li>
             </ul> -->
 
-          <ul class="space-y-4 mt-6 text-left w-72">
-            <li
-              class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2"
-            >
-              <a href="viewAppointment.html" class="block px-2 rounded-md">
-                <i class="fa-solid fa-calendar-check -ml-4 mr-2"></i>View
-                Appointment
-              </a>
-            </li>
-            <li
-              class="nav-item bg-white text-[#006B82] shadow-xl shadow-gray-900/50 rounded-r-3xl pl-3 py-2"
-            >
-              <a href="suggestMeds.html" class="block px-2 rounded-md">
-                <i class="fa-solid fa-pills -ml-4 mr-2"></i>Suggest Medicines
-              </a>
-            </li>
-            <li
-              class="nav-item bg-white text-[#006B82] rounded-r-3xl shadow-xl shadow-gray-900/50 pl-3 py-2"
-            >
-              <a href="suggestTest.html" class="block px-2 rounded-md">
-                <i class="fa-solid fa-stethoscope -ml-4 mr-2"></i>Suggest Tests
-              </a>
-            </li>
-          </ul>
-        </div>
-        <footer class="">
-          <button
-            id="sign-out-btn"
-            class="rounded-r-3xl w-72 shadow-xl shadow-gray-900/50 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none"
-          >
-            Sign Out
-          </button>
-        </footer>
-      </nav>
-    </div>
-
-    <!-- //bottombar -->
-    <div
-      class="fixed md:invisible bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600"
-    >
-      <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
-        <button
-          type="button"
-          class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
-        >
-          <svg
-            class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-            ></path>
-          </svg>
-          <span
-            class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            >Home</span
-          >
-        </button>
-        <button
-          type="button"
-          class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
-        >
-          <svg
-            class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
-            <path
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-            ></path>
-          </svg>
-          <span
-            class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            >Wallet</span
-          >
-        </button>
-        <button
-          type="button"
-          class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
-        >
-          <svg
-            class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"
-            ></path>
-          </svg>
-          <span
-            class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            >Settings</span
-          >
-        </button>
-        <button
-          type="button"
-          class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
-        >
-          <svg
-            class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              clip-rule="evenodd"
-              fill-rule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-            ></path>
-          </svg>
-          <span
-            class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-            >Profile</span
-          >
-        </button>
+        <ul class="space-y-4 mt-6 text-left w-72">
+          <li class="nav-item bg-white text-[#006B82] rounded-r-3xl pl-3 shadow-xl shadow-gray-900/50 py-2">
+            <a href="viewAppointment.html" class="block px-2 rounded-md">
+              <i class="fa-solid fa-calendar-check -ml-4 mr-2"></i>View
+              Appointment
+            </a>
+          </li>
+          <li class="nav-item bg-white text-[#006B82] shadow-xl shadow-gray-900/50 rounded-r-3xl pl-3 py-2">
+            <a href="suggestMeds.html" class="block px-2 rounded-md">
+              <i class="fa-solid fa-pills -ml-4 mr-2"></i>Suggest Medicines
+            </a>
+          </li>
+          <li class="nav-item bg-white text-[#006B82] rounded-r-3xl shadow-xl shadow-gray-900/50 pl-3 py-2">
+            <a href="suggestTest.html" class="block px-2 rounded-md">
+              <i class="fa-solid fa-stethoscope -ml-4 mr-2"></i>Suggest Tests
+            </a>
+          </li>
+        </ul>
       </div>
       <footer class="">
         <button id="sign-out-btn"
@@ -294,6 +232,68 @@
       </footer>
     </nav>
   </div>
+
+
+  <!-- //bottombar -->
+  <div
+    class="fixed md:invisible bottom-0 left-0 z-50  w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+    <nav id="bottombar">
+      <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium mt-4">
+        <!-- view appointment -->
+        <button type="button"
+          class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+          <a href="viewAppointment.html" class="block px-2 rounded-md">
+            <svg
+              class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+              fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path
+                d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 48 0c26.5 0 48 21.5 48 48l0 48L0 160l0-48C0 85.5 21.5 64 48 64l48 0 0-32c0-17.7 14.3-32 32-32zM0 192l448 0 0 272c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z" />
+            </svg>
+          </a>
+        </button>
+        <!-- suggest medicine -->
+        <button type="button"
+          class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+          <a href="suggestMeds.html" class="block px-2 rounded-md">
+            <svg
+              class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+              xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 576 512">
+              <path
+                d="M112 96c-26.5 0-48 21.5-48 48l0 112 96 0 0-112c0-26.5-21.5-48-48-48zM0 144C0 82.1 50.1 32 112 32s112 50.1 112 112l0 224c0 61.9-50.1 112-112 112S0 429.9 0 368L0 144zM554.9 399.4c-7.1 12.3-23.7 13.1-33.8 3.1L333.5 214.9c-10-10-9.3-26.7 3.1-33.8C360 167.7 387.1 160 416 160c88.4 0 160 71.6 160 160c0 28.9-7.7 56-21.1 79.4zm-59.5 59.5C472 472.3 444.9 480 416 480c-88.4 0-160-71.6-160-160c0-28.9 7.7-56 21.1-79.4c7.1-12.3 23.7-13.1 33.8-3.1L498.5 425.1c10 10 9.3 26.7-3.1 33.8z" />
+            </svg>
+          </a>
+
+        </button>
+        <!-- suggest test -->
+        <button type="button"
+          class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+          <a href="suggestTest.html" class="block px-2 rounded-md">
+            <svg
+              class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+              fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+              <path
+                d="M142.4 21.9c5.6 16.8-3.5 34.9-20.2 40.5L96 71.1 96 192c0 53 43 96 96 96s96-43 96-96l0-120.9-26.1-8.7c-16.8-5.6-25.8-23.7-20.2-40.5s23.7-25.8 40.5-20.2l26.1 8.7C334.4 19.1 352 43.5 352 71.1L352 192c0 77.2-54.6 141.6-127.3 156.7C231 404.6 278.4 448 336 448c61.9 0 112-50.1 112-112l0-70.7c-28.3-12.3-48-40.5-48-73.3c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3l0 70.7c0 97.2-78.8 176-176 176c-92.9 0-168.9-71.9-175.5-163.1C87.2 334.2 32 269.6 32 192L32 71.1c0-27.5 17.6-52 43.8-60.7l26.1-8.7c16.8-5.6 34.9 3.5 40.5 20.2zM480 224a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+            </svg>
+          </a>
+
+        </button>
+        <!-- signout button -->
+        <button type="button"
+          class="inline-flex flex-col items-center justify-center  px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+
+          <svg fill="currentColor"
+            class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+              d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z" />
+          </svg>
+
+        </button>
+      </div>
+      
+    </nav>
+  </div>
+
 
 
   <!-- Main Content -->
@@ -352,13 +352,14 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const userId = localStorage.getItem("userId");
-        const userIdMain = document.getElementById("userIdMain");
-        if (userIdMain) {
-          userIdMain.textContent = userId;
-        }
-        const userRole = localStorage.getItem("userRole");
-        document.getElementById("userId").textContent = userId;
-        document.getElementById("userRole").textContent = `(${userRole})`;
+      const userIdMain = document.getElementById("userIdMain");
+      if (userIdMain) {
+        userIdMain.textContent = userId;
+      }
+      const userRole = localStorage.getItem("userRole");
+      document.getElementById("userId").textContent = userId;
+      document.getElementById("userRole").textContent = `(${userRole})`;
+
       const navCheck = document.getElementById("navcheck");
       const sidebar = document.getElementById("sidebar");
       const mainContent = document.getElementById("main-content");
