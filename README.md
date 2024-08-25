@@ -12,7 +12,6 @@ The Hospital Management System (HMS) is a web application designed to streamline
 - **Doctor's Schedule**: Appointments can only be booked if the doctor's schedule is available.
 
 ### Admin Functions
-- **Pre-created Admin Account**: Admin accounts are pre-created for system access.
 - **Doctor Registration**: Admins can register new doctors into the system.
 - **Manage Doctor's Schedule**: Admins can view, update, and cancel doctor appointments.
 - **Doctor Management**: Admins can remove or update doctor details.
@@ -26,7 +25,7 @@ The Hospital Management System (HMS) is a web application designed to streamline
 ## User Interface Design
 
 ### General Requirements
-- **Single Entry Point**: The homepage serves as the entry point with navigation to all major functionalities.
+- **Single Entry Point**: The homepage serves as the entry point with navigation to all major functionalities, navigate to login.html to run the frontend part of the project.
 
 ### Sections and Actions
 
