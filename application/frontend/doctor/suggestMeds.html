@@ -31,7 +31,7 @@
     <!-- Main content -->
     <div class="content p-6 md:mx-12 mx-auto">
         <div class="p-10 md:mx-24 mx-auto bg-white rounded-xl ">
-          <h1 class="text-2xl font-bold mb-6 text-[#006B82] text-center">Suggest Medicine</h1>
+          <h1 class="text-2xl font-bold mb-6 text-[#006B82] text-left">Suggest Medicine</h1>
   
           <div class="bg-[#E5E5E5] p-10 rounded-xl">
             <div class="md:left-32 md:top-60 top-28 left-0 absolute md:w-20 w-16 md:p-4 p-2 bg-white rounded-full">
@@ -40,15 +40,15 @@
 
         <section class="bg-white p-6 border border-gray-300 rounded-xl shadow-md mb-6">
             <div class="mb-6">
-                <h2 class="text-xl font-bold mb-4">Patient Information</h2>
+                <h2 class="text-xl font-semibold mb-4 text-[#006B82]">Patient Information</h2>
                 <div class="flex flex-col md:flex-row mb-6">
                     <div class="mb-4 md:w-1/2 md:mr-2">
-                        <label for="patientName" class="block text-lg font-semibold mb-2">Patient Name</label>
+                        <label for="patientName" class="block text-lg font-normal mb-2">Patient Name</label>
                         <input type="text" id="patientName" placeholder="Select Patient"
                             class="w-full border border-gray-400 rounded-lg p-2">
                     </div>
                     <div class="md:w-1/2 md:ml-2 w-full">
-                        <label for="patientDetails" class="block text-lg font-semibold mb-2">Patient Details</label>
+                        <label for="patientDetails" class="block text-lg font-normal mb-2">Patient Details</label>
                         <textarea id="patientDetails" placeholder="Patient details will be displayed here..." disabled
                             class="w-full border border-gray-400 rounded-lg p-2"></textarea>
                     </div>
@@ -56,24 +56,24 @@
             </div>
 
             <div class="MedicationSection mb-6">
-                <h2 class="text-xl font-bold mb-4">Prescription Form</h2>
+                <h2 class="text-xl font-semibold mb-4 text-[#006B82]">Prescription Form</h2>
                 <form id="prescriptionForm">
                     <fieldset class="border-0">
                         <div class="flex flex-col md:flex-row mb-4">
                             <div class="md:w-1/2 md:mr-2 mb-4">
-                                <label for="medicineName" class="block text-lg font-semibold mb-2">Medicine Name</label>
+                                <label for="medicineName" class="block text-lg font-normal mb-2">Medicine Name</label>
                                 <input type="text" id="medicineName" placeholder="Enter medicine name"
                                     class="w-full border border-gray-400 rounded-lg p-2">
                             </div>
                             <div class="md:w-1/2 md:ml-2 mb-4">
-                                <label for="dosage" class="block text-lg font-semibold mb-2">Dosage</label>
+                                <label for="dosage" class="block text-lg font-normal mb-2">Dosage</label>
                                 <input type="text" id="dosage" placeholder="Enter dosage (e.g., 500 mg)"
                                     class="w-full border border-gray-400 rounded-lg p-2">
                             </div>
                         </div>
                         <div class="flex flex-col md:flex-row mb-4">
                             <div class="md:w-1/2 md:mr-2 mb-4">
-                                <label for="frequency" class="block text-lg font-semibold mb-2">Frequency</label>
+                                <label for="frequency" class="block text-lg font-normal mb-2">Frequency</label>
                                 <select id="frequency"
                                     class="w-full border border-gray-400 rounded-lg p-2">
                                     <option value="once">Once Daily</option>
@@ -82,13 +82,13 @@
                                 </select>
                             </div>
                             <div class="md:w-1/2 md:ml-2 mb-4">
-                                <label for="duration" class="block text-lg font-semibold mb-2">Duration</label>
+                                <label for="duration" class="block text-lg font-normal mb-2">Duration</label>
                                 <input type="text" id="duration" placeholder="Enter duration (e.g., 7 days)"
                                     class="w-full border border-gray-400 rounded-lg p-2">
                             </div>
                         </div>
                         <div class="mb-4">
-                            <label for="instructions" class="block text-lg font-semibold mb-2">Additional Instructions</label>
+                            <label for="instructions" class="block text-lg font-normal mb-2">Additional Instructions</label>
                             <textarea id="instructions" placeholder="Enter special instructions"
                                 class="w-full border border-gray-400 rounded-lg p-2"></textarea>
                         </div>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="MedicationHistory mb-6">
-                <h2 class="text-xl font-bold mb-4">Medication History</h2>
+                <h2 class="text-xl font-semibold mb-4 text-[#006B82]">Medication History</h2>
                 <div id="historyList" class="border border-gray-400 rounded-lg p-4">
                     <!-- History will be displayed here -->
                 </div>
@@ -111,7 +111,7 @@
             </div>
 
             <div class="FormButtonRow">
-                <button type="button" class="FormButton w-1/3 bg-[#0092b3] hover:bg-[#006B82] text-white font-medium py-2 rounded-md border border-gray-400 hover:bg-gray-300" id="savePrescription">Save Prescription</button>
+                <button type="button" class="FormButton w-1/3 bg-green-500 hover:bg-green-600 text-white font-medium py-2 rounded-md" id="savePrescription">Save Prescription</button>
                 <!-- <button type="button" class="FormButton" id="printPrescription">Print Prescription</button> -->
             </div>
         </div>

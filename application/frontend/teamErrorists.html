@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospital Management System - Admin</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.9.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <style></style>
+  </head>
+
+  <body
+    class="min-h-screen bg-gradient-to-r from-[#0090AF] to-[#013A40] font-sans overflow-x-hidden"
+  >
+  <div class="content md:p-6 md:mx-12 mx-auto">
+    <div class="md:p-10 md:mx-24 p-6 mx-auto bg-white md:rounded-xl">
+        <h2 class="md:text-4xl text-2xl font-bold mb-2 text-[#006B82]">Team Errorist</h2>
+        <p class="text-xl mb-4 text-[#006B82] ">
+          Turning every error into innovation.
+        </p>
+  
+      <div class="bg-[#E5E5E5] md:p-10 rounded-xl relative flex">
+        <div class="bg-white p-20 rounded-xl">
+    <!-- <section class="py-20 px-6 md:px-10 lg:px-20 text-center"> -->
+      
+      <div
+        class="grid gap-8 md:gap-14 lg:gap-16  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 "
+      >
+        <!-- Card 1 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/yash.png"
+              alt="Yash Pande"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/yash-pande-/"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/yash-pande-/"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Yash Pande</h3>
+              <p class="text-gray-600 text-sm">Team Leader</p>
+            </a>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/ajay.jpg"
+              alt="Ajay"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/paidi-ajay/"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/paidi-ajay/"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Ajay Paidi</h3>
+              <p class="text-gray-600 text-sm">Frontend Dev</p>
+            </a>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/spoc.jpg"
+              alt="Soham"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/sohamravindran/"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/sohamravindran/"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Soham Ravindran</h3>
+              <p class="text-gray-600 text-sm">Backend Dev</p>
+            </a>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/mansoor.jpg"
+              alt="mansoor"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/mohammed-mansoor-khalifa-b2078b311/"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/mohammed-mansoor-khalifa-b2078b311/"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Md Mansoor Khalifa</h3>
+              <p class="text-gray-600 text-sm">Frontend</p>
+            </a>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/kishan.jpg"
+              alt="kishan"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/kishan-pandey-572213231/"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/kishan-pandey-572213231/"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Kishan Pandey </h3>
+              <p class="text-gray-600 text-sm">Backend Dev</p>
+            </a>
+          </div>
+        </div><!-- Card 6 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/srija.jpg"
+              alt="Srija"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/g-srija/"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/g-srija/"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Srija Gara</h3>
+              <p class="text-gray-600 text-sm">Frontend & Documentation</p>
+            </a>
+          </div>
+        </div><!-- Card 7 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/sayantika.jpg"
+              alt="Sayantika"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/sayantika-pattanayak-404a76248/"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/sayantika-pattanayak-404a76248/"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Sayantika P</h3>
+              <p class="text-gray-600 text-sm">Frontend & Documentation</p>
+            </a>
+          </div>
+        </div>
+        <!-- Card 8 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/rhutuj.jpg"
+              alt="Rhutuj"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/rhutuj-bhoir-783b1020a/"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/rhutuj-bhoir-783b1020a/"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Rhutuj Bhoir</h3>
+              <p class="text-gray-600 text-sm">Backend Dev</p>
+            </a>
+          </div>
+        </div>
+        <!-- Card 9 -->
+        <div
+          class="relative text-left hover:bg-gray-200 bg-gray-300 rounded-md hover:text-white hover:grayscale-0"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="./assets/team/devansh.jpg"
+              alt="Devansh"
+              class="object-cover w-full grayscale transition duration-500 rounded-t-md hover:grayscale-0"
+            />
+          </div>
+          <a
+            href="https://www.linkedin.com/in/devansh-choudhury-60768a13a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+            target="_blank"
+            class="social-icon absolute left-0 bg-gray-900 p-4 text-white"
+          >
+            <i class="fa-brands fa-linkedin text-xl hover:text-[#0092b3]"></i>
+          </a>
+          <div class="card-content-wrapper mt-6 ml-auto max-w-[90%]">
+            <a
+              href="https://www.linkedin.com/in/devansh-choudhury-60768a13a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+              target="_blank"
+              class="block transition duration-500 p-4 text-right"
+            >
+              <h3 class="text-lg font-bold text-gray-900">Devansh C</h3>
+              <p class="text-gray-600 text-sm">Backend & Documentation</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Repeat similar structure for other cards -->
+      </div>
+    <!-- </section> -->
+</div>
+     </div>
+     </div>
+     </div>
+  </body>
+</html>

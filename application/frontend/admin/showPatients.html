@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show All Patients</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: "#da373d",
+                    },
+                },
+            },
+        };
+    </script>
+    <script src="sideNav.js" defer></script>
+</head>
+    <!-- Main Content -->
+    <div class="content p-6 md:mx-12 mx-auto">
+        <div class="p-10 md:mx-24 mx-auto bg-white rounded-xl ">
+          <h1 class="md:text-2xl text-xl font-bold mb-6 text-[#006B82]">All Patients</h1>
+  
+          <div class="bg-[#E5E5E5] p-10 rounded-xl">
+            <div class="md:left-32 md:top-60 top-28 left-0 absolute md:w-20 w-16 md:p-4 p-2 bg-white rounded-full">
+                <img
+                  src="../assets/patient.svg"
+                  alt="Patient"
+                  class="mx-auto h-12"
+                />
+              </div>
+            <table id="patient-table" class="min-w-full rounded-xl bg-white ">
+                <thead>
+                    <tr class="text-[#888888] ">
+                        <th class="py-2 px-4 border-b font-medium">Patient ID</th>
+                        <th class="py-2 px-4 border-b font-medium">Full Name</th>
+                        <th class="py-2 px-4 border-b font-medium">Date of Birth</th>
+                        <th class="py-2 px-4 border-b font-medium">Gender</th>
+                        <th class="py-2 px-4 border-b font-medium">Disease</th>
+                        <th class="py-2 px-4 border-b font-medium">Doctor Appointed</th>
+                        <th class="py-2 px-4 border-b font-medium">Appointment Date</th>
+                        <th class="py-2 px-4 border-b font-medium">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+            <div id="pagination-controls" class="mt-4 flex justify-between items-center">
+                <button id="prev-page" class="bg-[#006B82] text-white px-4 py-2 rounded-md disabled:opacity-50" disabled>Previous</button>
+                <span id="page-info" class="text-gray-600"></span>
+                <button id="next-page" class="bg-[#006B82] text-white px-4 py-2 rounded-md">Next</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- <script src="adminFunctions.js" defer></script> -->
+</body>
+</html>
