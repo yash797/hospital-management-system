@@ -2,8 +2,18 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".side-nav a");
+  const bottomNavLinks = document.querySelectorAll('#bottombar a');
 
   navLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const pageUrl = link.getAttribute("href");
+      fetchPageContent(pageUrl);
+      staffUtilizationReport();
+    });
+  });
+
+  bottomNavLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       const pageUrl = link.getAttribute("href");
