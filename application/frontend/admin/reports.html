@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reports</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.7/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -17,37 +20,54 @@
         },
       };
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="sideNav.js" defer></script>
     <script src="admin-functions.js" defer></script>
-
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Main Content -->
-    <div class="content p-6 md:mx-28 mx-auto">
-        <h1 class="text-2xl font-bold mb-6">Reports</h1>
+    <div class="content p-6 md:mx-12 mx-auto">
+      <div class="p-10 md:mx-24 mx-auto bg-white rounded-xl">
+        <h1 class="md:text-2xl text-xl font-bold mb-6 text-[#006B82]">
+          Reports
+        </h1>
 
-        <!-- Report Generation Form -->
-        <form id="reportForm" class="bg-white p-6 border border-gray-300 rounded-md mb-6">
+        <div class="bg-[#E5E5E5] p-10 rounded-xl">
+          <div
+            class="md:left-32 md:top-60 top-28 left-0 absolute md:w-20 w-16 md:p-4 p-2 bg-white rounded-full"
+          >
+            <img src="../assets/report.png" alt="report" class="mx-auto" />
+          </div>
+
+          <!-- Report Generation Form -->
+          <form
+            id="reportForm"
+            class="bg-white p-6 border border-gray-300 rounded-xl mb-6 pb-16"
+          >
             <h2 class="text-xl font-semibold mb-4">Generate Report</h2>
             <label class="block mb-4">
-                <span class="text-gray-700">Select Report Type</span>
-                <select id="reportType" class="form-select mt-3 block md:w-56 -ml-1 w-full p-1 border-2 rounded-md">
-                    <option>Doctor Appointments</option>
-                    <option>Patient Statistics</option>
-                    <option>Staff Utilization</option>
-                </select>
+              <select
+                id="reportType"
+                class="form-select mt-3 block md:w-56 -ml-1 w-full p-1 border-2 rounded-md"
+                onchange="generateReport()"
+              >
+                <option value="invalid.html">Select Report Type</option>
+
+                <option value="docReport.html">Doctor Appointments</option>
+                <option value="patientStatistics.html">
+                  Patient Statistics
+                </option>
+                <option value="staffUtilizationReport.html">
+                  Staff Utilization
+                </option>
+              </select>
             </label>
-            <button type="button" onclick="generateReport()" class="bg-blue-600 text-white px-4 py-2 rounded-md">Generate Report</button>
-        </form>
+          </form>
 
-        <!-- Static Report Data Example -->
-        <div id="reportResults" class="bg-white p-6 border border-gray-300 rounded-md">
-            <h2 class="text-lg font-semibold mb-4">Report Results</h2>
-            <p>No report generated yet. Select a report type and click "Generate Report".</p>
+          <!-- Static Report Data Example -->
+          <div id="reportResults" class="text-red-500"></div>
         </div>
+      </div>
     </div>
-
-
-</body>
+  </body>
 </html>

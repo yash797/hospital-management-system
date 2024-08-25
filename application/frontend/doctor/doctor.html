@@ -24,12 +24,14 @@
     };
   </script>
   <script>
+
     document.addEventListener("DOMContentLoaded", function () {
       const allowedRoles = {
         "/application/frontend/admin/admin.html": "Admin",
         "/application/frontend/doctor/doctor.html": "Doctor",
         "/application/frontend/staff/staff.html": "Staff",
       };
+
 
       const currentPage = window.location.pathname;
       const userRole = localStorage.getItem("userRole");
@@ -45,8 +47,10 @@
         localStorage.clear(); // Clear all local storage
         window.location.href = "/application/frontend/login.html"; // Redirect to login page
       });
+
     });
   </script>
+
   <script src="sideNav.js" defer></script>
   <script src="doctorFunction.js" defer></script>
 
@@ -79,6 +83,7 @@
         <div class="w-8 h-0.5 bg-gray-800"></div>
       </div>
     </label>
+
 
 
 
@@ -123,6 +128,7 @@
       </footer>
     </nav>
   </div>
+
 
   <!-- //bottombar -->
   <div
@@ -188,6 +194,7 @@
 
   <!-- Main Content -->
   <main class="mx-auto transition-transform duration-500 ease-in-out content z-0 relative " id="main-content">
+
     <div class="text-center p-8">
       <div class="text-4xl font-semibold text-[#006B82]">
         <span>Hello</span>
@@ -200,7 +207,7 @@
 
       <img src="../assets/HospitalBuilding.png" class="mx-auto mt-4" style="width: 100vh; max-height: 60vh;">
     </div>
-  </main>
+    </main>
 
 
   <script>
@@ -213,6 +220,7 @@
       const userRole = localStorage.getItem("userRole");
       document.getElementById("userId").textContent = userId;
       document.getElementById("userRole").textContent = `(${userRole})`;
+
       const navCheck = document.getElementById("navcheck");
       const sidebar = document.getElementById("sidebar");
       const mainContent = document.getElementById("main-content");
